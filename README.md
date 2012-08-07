@@ -1,4 +1,4 @@
 Theresien-EMS
 =============
 
-EMS for Theresienball 2012
+Event Management System for Theresienball 2012
