@@ -3,5 +3,8 @@ TheresienEms::Application.routes.draw do
 
   get "home/index"
 
+  match "home/booking" => "home#booking"
+
+
   root :to => "home#index"
 end
