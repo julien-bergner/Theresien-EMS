@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(:version => 20120811182820) do
 
   create_table "prom_tables", :force => true do |t|
     t.integer  "position"
+    t.string   "orientation"
     t.string   "caption"
     t.integer  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "seats", :force => true do |t|

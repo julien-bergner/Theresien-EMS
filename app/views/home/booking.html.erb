@@ -3,11 +3,12 @@
 <%= javascript_include_tag :defaults %>
 
 <div id=booking-canvas>
+
 <%  @table_and_seat_data.each do |table,seats| %>
       <div id=table-<%= table.position %>>
-      <div class=caption-container-table-horizontal><h3 class=caption-text-table-horizontal>Tisch <%= table.position %> </2></div>
+      <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Tisch <%= table.position %> </2></div>
       <% seats.each do |seat| %>
-      <div class=seat-<%= seat.position %>-horizontal id=seat-<%= seat.id %> ><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
+      <div class=seat-<%= seat.position %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
       <% end %>
 
 
