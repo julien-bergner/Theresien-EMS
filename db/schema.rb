@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807214450) do
+ActiveRecord::Schema.define(:version => 20120811182820) do
 
   create_table "customers", :force => true do |t|
     t.string   "designation"
@@ -25,6 +25,24 @@ ActiveRecord::Schema.define(:version => 20120807214450) do
     t.string   "childrens_class"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "prom_tables", :force => true do |t|
+    t.integer  "position"
+    t.string   "caption"
+    t.integer  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "seats", :force => true do |t|
+    t.integer  "prom_table_id"
+    t.integer  "position"
+    t.string   "caption"
+    t.integer  "price"
+    t.integer  "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end
