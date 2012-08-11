@@ -1,3 +1,49 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$picture-width: 30;
+$picture-height: 30;
+$space-width: 1px;
+$space-height: 1px;
+
+@mixin size($width: 28px, $height: 28px) {
+  width: $width;
+  height: $height;
+}
+
+//Seat 1
+div.seat-1-horizontal
+{
+  position:absolute;
+  top: (0.5*($picture-width + $space-width)); left:0px;
+  @include size();
+}
+
+//Seats 2-5 in the upper row
+@for $i from 2 through 5 {
+  $adjustment-factor: ($i - 1);
+  div.seat-#{$i}-horizontal {
+    position:absolute;
+    top:0px; left:$adjustment-factor*($picture-width + $space-width);
+    @include size();
+  }
+}
+
+//Seats 6-9 in the lower row
+  @for $j from 6 through 9 {
+    $adjustment-factor: ($j - 5);
+    div.seat-#{$j}-horizontal {
+      position:absolute;
+      top:($picture-width + $space-width); left:$adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+
+//Seat 10
+div.seat-10-horizontal
+{
+  position:absolute;
+  top:(0.5*($picture-width + $space-width)); left:(5*($picture-width + $space-width));
+  @include size();
+}
