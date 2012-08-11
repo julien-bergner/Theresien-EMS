@@ -29,7 +29,7 @@
     <td><%= customer.childrens_class %></td>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', customer, method: :delete, table_and_seat_data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

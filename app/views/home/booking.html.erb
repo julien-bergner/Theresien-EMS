@@ -2,9 +2,29 @@
 <p>Tisch 1</p>
 <%= javascript_include_tag :defaults %>
 
+<div id=booking-canvas>
+<%  @table_and_seat_data.each do |table,seats| %>
+      <div id=table-<%= table.position %>>
+      <div class=caption-container-table-horizontal><h3 class=caption-text-table-horizontal>Tisch <%= table.position %> </2></div>
+      <% seats.each do |seat| %>
+      <div class=seat-<%= seat.position %>-horizontal id=seat-<%= seat.id %> ><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
+      <% end %>
 
-<div style="position: relative;">
-<div class=table-horizontal style="position: absolute; top:100; left:100; ">
+
+      </div>
+
+     <% end  %>
+
+
+
+
+</div>
+
+
+<!--
+
+<div id=table-1>
+<div class=caption-container-table-horizontal><p class=caption-text-table-horizontal>Tisch 1</p></div>
 <div class=seat-1-horizontal><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
 <div class=seat-2-horizontal><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
 <div class=seat-3-horizontal><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
@@ -17,3 +37,4 @@
 <div class=seat-10-horizontal><%= image_tag("unoccupied.png", :class => 'seat', :name => 'unoccupied')%></div>
 </div>
 </div>
+-->

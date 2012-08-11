@@ -2,21 +2,58 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$picture-width: 30;
-$picture-height: 30;
+$picture-width: 30px;
+$picture-height: 30px;
 $space-width: 1px;
 $space-height: 1px;
+$caption-width: 80px;
+$caption-height: 40px;
+$caption-space-width: 10px;
+$caption-space-height: 20px;
+$start-width: 0px;
+$start-height: 0px;
 
 @mixin size($width: 28px, $height: 28px) {
   width: $width;
   height: $height;
 }
 
+//Booking-Canvas
+
+#booking-canvas {
+  position: absolute;
+  background-color: #dcdcdc;
+  width: 600px;
+  height: 800px;
+}
+
+.caption-container-table-horizontal {
+  position: absolute;
+  top: (0.5*($picture-width + $space-width)); left: $start-width;
+  width: $caption-width;
+  height: $caption-height;
+
+}
+
+.caption-text-table-horizontal {
+  text-align: right;
+
+}
+
+@for $k from 1 through 10 {
+    $adjustment-factor: ($k - 1);
+    #table-#{$k} {
+        position:absolute;
+        top: 70px * $adjustment-factor + 10px; left:200px;
+    }
+
+}
+
 //Seat 1
 div.seat-1-horizontal
 {
   position:absolute;
-  top: (0.5*($picture-width + $space-width)); left:0px;
+  top: (0.5*($picture-width + $space-width)); left:$start-width + $caption-width + $caption-space-width;
   @include size();
 }
 
@@ -25,7 +62,7 @@ div.seat-1-horizontal
   $adjustment-factor: ($i - 1);
   div.seat-#{$i}-horizontal {
     position:absolute;
-    top:0px; left:$adjustment-factor*($picture-width + $space-width);
+    top:0px; left:$start-width + $caption-width + $caption-space-width + $adjustment-factor*($picture-width + $space-width);
     @include size();
   }
 }
@@ -35,7 +72,7 @@ div.seat-1-horizontal
     $adjustment-factor: ($j - 5);
     div.seat-#{$j}-horizontal {
       position:absolute;
-      top:($picture-width + $space-width); left:$adjustment-factor*($picture-width + $space-width);
+      top:($picture-width + $space-width); left:$start-width + $caption-width + $caption-space-width + $adjustment-factor*($picture-width + $space-width);
       @include size();
     }
   }
@@ -44,6 +81,6 @@ div.seat-1-horizontal
 div.seat-10-horizontal
 {
   position:absolute;
-  top:(0.5*($picture-width + $space-width)); left:(5*($picture-width + $space-width));
+  top:(0.5*($picture-width + $space-width)); left:$start-width + $caption-width + $caption-space-width + (5*($picture-width + $space-width));
   @include size();
 }
