@@ -1,50 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Customer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Designation:</b>
-  <%= @customer.designation %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:designation) %>:</strong></dt>
+  <dd><%= @customer.designation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
+  <dd><%= @customer.first_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
+  <dd><%= @customer.last_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:street_name) %>:</strong></dt>
+  <dd><%= @customer.street_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:street_number) %>:</strong></dt>
+  <dd><%= @customer.street_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:zip_code) %>:</strong></dt>
+  <dd><%= @customer.zip_code %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+  <dd><%= @customer.city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @customer.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:childrens_class) %>:</strong></dt>
+  <dd><%= @customer.childrens_class %></dd>
+</dl>
 
-<p>
-  <b>First name:</b>
-  <%= @customer.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @customer.last_name %>
-</p>
-
-<p>
-  <b>Street name:</b>
-  <%= @customer.street_name %>
-</p>
-
-<p>
-  <b>Street number:</b>
-  <%= @customer.street_number %>
-</p>
-
-<p>
-  <b>Zip code:</b>
-  <%= @customer.zip_code %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @customer.city %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @customer.email %>
-</p>
-
-<p>
-  <b>Childrens class:</b>
-  <%= @customer.childrens_class %>
-</p>
-
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              customers_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_customer_path(@customer), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              customer_path(@customer),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

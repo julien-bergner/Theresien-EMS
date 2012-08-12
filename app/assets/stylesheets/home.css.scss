@@ -23,8 +23,11 @@ $start-height: -25px;
 #booking-canvas {
   position: absolute;
   background-color: #dcdcdc;
-  width: 600px;
-  height: 800px;
+  width: 940px;
+  height: 1000px;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 2px;
 }
 //Position of Tables
 @for $k from 1 through 3 {
