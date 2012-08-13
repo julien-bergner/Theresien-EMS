@@ -22,34 +22,68 @@ $start-height: -25px;
   height: $height;
 }
 
+#stage {
+  position: absolute;
+  left: 120px;
+  top: 10px;
+}
+
+#buffet {
+  position: absolute;
+  left: 10px;
+  top: 100px;
+}
+
+#bar {
+  position: absolute;
+  left: 10px;
+  top: 300px;
+}
+
+//Stuff
+#selection-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 900px;
+  min-height: 200px;
+
+
+
+}
+
 //Booking-Canvas
 
 #booking-canvas {
   position: relative;
-  background-color: #dcdcdc;
-  width: 940px;
-  height: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #ffffff;
+  width: 900px;
+  height: 800px;
   border-color: #000000;
   border-style: solid;
   border-width: 2px;
 }
 //Position of Tables
-  @for $k from 1 through 3 {
-      $adjustment-factor: ($k - 1);
+
+#table-0 {
+  position:absolute;
+  left: 200px; top: 80px;
+
+}
+
+  @for $k from 5 through 15 {
+      $adjustment-factor: ($k - 5);
       #table-#{$k} {
           position:absolute;
-          left: 90px * $adjustment-factor + 240px; top: 0px;
+          left: 900px - 87px * $adjustment-factor; top: 560px;
       }
 
   }
 
-  @for $k from 4 through 10 {
+  @for $k from 1 through 5 {
       $adjustment-factor: ($k - 1);
       #table-#{$k} {
           position:absolute;
-          top: 90px * $adjustment-factor - 20px; left:270px;
+          top: 90px * $adjustment-factor + 90px; left:600px;
       }
 
   }
@@ -157,3 +191,30 @@ div.seat-10-vertical
   left:(0.5*($picture-height + $space-height)); top:$start-height + $caption-height + $caption-space-height + (5*($picture-height + $space-height));
   @include size();
 }
+
+
+//Promenade Tickets
+
+//Caption
+.caption-container-table-promenade {
+  position: absolute;
+  top: 30px; left: 20px;
+  height: $picture-height + $space-height;
+  width: $caption-width;
+
+}
+
+.caption-text-table-promenade {
+  text-align: center;
+
+}
+
+  @for $i from 1 through 5 {
+    $adjustment-factor: ($i - 1);
+    div.seat-#{$i}-promenade {
+      position:absolute;
+      top:0px; left: $adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+

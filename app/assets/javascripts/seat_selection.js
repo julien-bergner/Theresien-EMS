@@ -8,24 +8,46 @@ $(function(){
        });
 });
 
+$(function(){
+    $("#next-button").click(function() {
+        var bool = false;
+        for (var i = 1; i <= numberOfTables; i++)
+        {
+            if(selectedSeats[i-1] > 0) {bool = true};
+        }
+        if(bool == true)
+           $(this).attr('name', "selectedSeats=" + JSON.stringify( selectedSeats ));
+        else
+            alert("Bitte wählen Sie mindestens einen Platz aus den Sie reservieren möchten!");
+
+    });
+});
+
 
 function ManageSelection(img)
 {
     var name = img.attr('name');
-    if (name == "occupied")
+    var parts = name.split('?');
+    if (parts[0] == "occupied")
         alert('Dieser Platz ist bereits vergeben. Bitte wählen Sie einen anderen Platz aus!');
-    else if (name == "reserved")
+    else if (parts[0] == "reserved")
         alert('Dieser Platz ist bereits reserviert. Bitte wählen Sie einen anderen Platz aus!');
-    else if (name == "unoccupied")
+    else if (parts[0] == "unoccupied")
     {
         img.attr('src', '/assets/selected.png');
-        img.attr('name', 'selected');
+        var newName = 'selected' + '?' + parts[1];
+        img.attr('name', newName);
+        AddSeat(parseInt(parts[1]));
+        writeText();
 
     }
-    else if (name == "selected")
+    else if (parts[0] == "selected")
     {
         img.attr('src', '/assets/unoccupied.png');
-        img.attr('name', 'unoccupied')
+        var unoccupied = 'unoccupied' + '?' + parts[1];
+        img.attr('name', unoccupied)
+        RemoveSeat(parseInt(parts[1]));
+        writeText();
 
 
 
@@ -58,11 +80,11 @@ function writeText()
     var txt = "&nbsp;";
     var tickettype = "";
     document.getElementById("textausgabe1").innerHTML=txt;
-    document.getElementById("textausgabe2").innerHTML=txt;
+
     for (var i = 0; i < numberOfTables; i++)
     {
         if(i==0) { tickettype = "Flanierkarte";}
-        else if (i >= 11) { tickettype = "Emporenkarte"; }
+
         else {tickettype = "Platzkarte";}
 
         if(i==0)
@@ -72,7 +94,7 @@ function writeText()
                 if(txt == "&nbsp;")
                 {txt = txt + selectedSeats[i] + " " +  tickettype ;}
                 else
-                {txt = txt + "<br>" + selectedSeats[i] + " " + tickettype ;}
+                {txt = txt + "<br>" + "&nbsp;" + selectedSeats[i] + " " + tickettype ;}
 
             }
             else if (selectedSeats[i] > 1)
@@ -80,7 +102,7 @@ function writeText()
                 if(txt == "&nbsp;")
                 {txt = txt + selectedSeats[i] + " " + tickettype + "n" ;}
                 else
-                {txt = txt + "<br>" + selectedSeats[i] + " " + tickettype + "n" ;}
+                {txt = txt + "<br>" + "&nbsp;" + selectedSeats[i] + " " + tickettype + "n" ;}
 
             }
 
@@ -96,7 +118,7 @@ function writeText()
                 if(txt == "&nbsp;")
                 {txt = txt + selectedSeats[i] + " " +  tickettype + " an Tisch " + parseInt(i) ;}
                 else
-                {txt = txt + "<br>" + selectedSeats[i] + " " + tickettype + " an Tisch " + parseInt(i) ;}
+                {txt = txt + "<br>" + "&nbsp;" + selectedSeats[i] + " " + tickettype + " an Tisch " + parseInt(i) ;}
 
             }
             else if (selectedSeats[i] > 1)
@@ -104,14 +126,14 @@ function writeText()
                 if(txt == "&nbsp;")
                 {txt = txt + selectedSeats[i] + " " + tickettype + "n" + " an Tisch " + parseInt(i) ;}
                 else
-                {txt = txt + "<br>" + selectedSeats[i] + " " + tickettype + "n" + " an Tisch " + parseInt(i) ;}
+                {txt = txt + "<br>" + "&nbsp;" + selectedSeats[i] + " " + tickettype + "n" + " an Tisch " + parseInt(i) ;}
 
             }
         }
     }
 
     document.getElementById("textausgabe1").innerHTML=txt;
-    document.getElementById("textausgabe2").innerHTML=txt;
+
 
 
 }
