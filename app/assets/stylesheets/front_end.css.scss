@@ -25,10 +25,12 @@ $start-height: -25px;
 //Booking-Canvas
 
 #booking-canvas {
-  position: absolute;
+  position: relative;
   background-color: #dcdcdc;
   width: 940px;
   height: 1000px;
+  margin-left: auto;
+  margin-right: auto;
   border-color: #000000;
   border-style: solid;
   border-width: 2px;
