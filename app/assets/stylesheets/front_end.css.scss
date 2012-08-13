@@ -1,3 +1,157 @@
 // Place all the styles related to the FrontEnd controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$picture-width: 30px;
+$picture-height: 30px;
+$space-width: 1px;
+$space-height: 1px;
+$caption-width: 80px;
+$caption-height: 40px;
+$caption-space-width: 10px;
+$caption-space-height: 20px;
+$start-width: 0px;
+$start-height: -25px;
+
+@mixin size($width: 28px, $height: 28px) {
+  width: $width;
+  height: $height;
+}
+
+//Booking-Canvas
+
+#booking-canvas {
+  position: absolute;
+  background-color: #dcdcdc;
+  width: 940px;
+  height: 1000px;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 2px;
+}
+//Position of Tables
+  @for $k from 1 through 3 {
+      $adjustment-factor: ($k - 1);
+      #table-#{$k} {
+          position:absolute;
+          left: 90px * $adjustment-factor + 240px; top: 0px;
+      }
+
+  }
+
+  @for $k from 4 through 10 {
+      $adjustment-factor: ($k - 1);
+      #table-#{$k} {
+          position:absolute;
+          top: 90px * $adjustment-factor - 20px; left:270px;
+      }
+
+  }
+
+//Horizontal Tables
+
+//Caption
+.caption-container-table-horizontal {
+  position: absolute;
+  top: (0.5*($picture-width + $space-width)); left: $start-width;
+  width: $caption-width;
+  height: $caption-height;
+
+}
+
+.caption-text-table-horizontal {
+  text-align: right;
+
+}
+
+//Seat 1
+div.seat-1-horizontal
+{
+  position:absolute;
+  top: (0.5*($picture-width + $space-width)); left:$start-width + $caption-width + $caption-space-width;
+  @include size();
+}
+
+//Seats 2-5 in the upper row
+  @for $i from 2 through 5 {
+    $adjustment-factor: ($i - 1);
+    div.seat-#{$i}-horizontal {
+      position:absolute;
+      top:0px; left:$start-width + $caption-width + $caption-space-width + $adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+
+//Seats 6-9 in the lower row
+  @for $j from 6 through 9 {
+    $adjustment-factor: ($j - 5);
+    div.seat-#{$j}-horizontal {
+      position:absolute;
+      top:($picture-width + $space-width); left:$start-width + $caption-width + $caption-space-width + $adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+
+//Seat 10
+div.seat-10-horizontal
+{
+  position:absolute;
+  top:(0.5*($picture-width + $space-width)); left:$start-width + $caption-width + $caption-space-width + (5*($picture-width + $space-width));
+  @include size();
+}
+
+//Vertical Tables
+
+//Caption
+.caption-container-table-vertical {
+  position: absolute;
+  top: 0px; left: 0px;
+  height: $picture-height + $space-height;
+  width: $caption-width;
+
+}
+
+.caption-text-table-vertical {
+  text-align: left;
+
+}
+
+//Seat 1
+div.seat-1-vertical
+{
+  position:absolute;
+  left: (0.5*($picture-height + $space-height)); top:$start-height + $caption-height + $caption-space-height;
+  @include size();
+}
+
+//Seats 2-5 in the upper row
+  @for $i from 2 through 5 {
+    $adjustment-factor: ($i - 1);
+    div.seat-#{$i}-vertical {
+      position:absolute;
+      left:0px; top:$start-height + $caption-height + $caption-space-height + $adjustment-factor*($picture-height + $space-height);
+      @include size();
+    }
+  }
+
+//Seats 6-9 in the lower row
+  @for $j from 6 through 9 {
+    $adjustment-factor: ($j - 5);
+    div.seat-#{$j}-vertical {
+      position:absolute;
+      left:($picture-height + $space-height); top:$start-height + $caption-height + $caption-space-height + $adjustment-factor*($picture-height + $space-height);
+      @include size();
+    }
+  }
+
+//Seat 10
+div.seat-10-vertical
+{
+  position:absolute;
+  left:(0.5*($picture-height + $space-height)); top:$start-height + $caption-height + $caption-space-height + (5*($picture-height + $space-height));
+  @include size();
+}
