@@ -28,4 +28,8 @@ class FrontEndController < ApplicationController
 
   end
 
+  def legal
+
+  end
+
 end
