@@ -7,6 +7,7 @@ gem 'rails', '3.2.7'
 
 gem 'mysql2'
 gem 'less-rails'
+gem'paypal'
 
 
 
