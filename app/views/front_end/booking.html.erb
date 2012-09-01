@@ -6,42 +6,51 @@
 
 <div id="selection-container">
 
-    <h3>Bitte w&auml;hlen Sie die Pl&auml;tze aus, die Sie kaufen m&ouml;chten:</h3>
-    <br/>
-    <h3 id="textausgabe1">&nbsp;</h3>
-    <br/>
-    <%= link_to "Weiter", '#', :class => "btn btn-primary btn-large", :id => "next-button" %>
+  <h3>Bitte w&auml;hlen Sie die Pl&auml;tze aus, die Sie bestellen m&ouml;chten:</h3>
+  <br/>
+  <h3 id="textoutput"></h3>
+  <br/>
+
+
+
 </div>
 
+<%= form_tag :receiveSelectedSeats, :method => "put" %>
+<%= hidden_field_tag :selectedSeatsList, "" %>
+
+<%= submit_tag("Weiter", :class => "btn btn-large", :id => "next-button", :disabled => true)  %>
 
 <div id=booking-canvas>
 
-    <%  @table_and_seat_data.each do |table,seats| %>
+  <%  @table_and_seat_data.each do |table,seats| %>
 
-              <div id=table-<%= table.position %>>
+      <div id=table-<%= table.position %>>
 
-                  <% if table.position.to_s == "0"  %>
-                      <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Flanierkarten</h3></div>
-                      <% for seat in 1..5 %>
-                        <% name = 'unoccupied' + '?' + table.position.to_s	  %>
-                        <div class=seat-<%= seat %>-<%= table.orientation %> id=seat-<%= seat %> ><%= image_tag("unoccupied.png", :class => 'seat', :name => name)%></div>
-                      <% end  %>
-                  <% else %>
-                      <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Tisch <%= table.position %></h3></div>
-                      <% seats.each do |seat| %>
-                      <% name = 'unoccupied' + '?' + table.position.to_s	  %>
-                      <div class=seat-<%= seat.position %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag("unoccupied.png", :class => 'seat', :name => name)%></div>
-                      <% end %>
-                  <% end %>
+        <% if table.position.to_s == "0"  %>
+            <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Flanierkarten</h3></div>
+            <% seats.each do |seat| %>
+                <% if seat.id <= 5  %>
+                    <% name = getStatusString(seat.status) + '?' + table.position.to_s	  %>
+                    <div class=seat-<%= seat.id %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag(getIconPath(seat.status), :id => seat.id, :class => 'seat', :name => name)%></div>
+                <% end  %>
+            <% end  %>
+        <% else %>
+            <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Tisch <%= table.position %></h3></div>
+            <% seats.each do |seat| %>
 
-              </div>
+                <% name = getStatusString(seat.status) + '?' + table.position.to_s	  %>
+                <div class=seat-<%= seat.position %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag(getIconPath(seat.status), :id => seat.id, :class => 'seat', :name => name)%></div>
+            <% end %>
+        <% end %>
 
-    <% end  %>
+      </div>
 
-    <div id="bar"><%= image_tag("bar.png")%></div>
-    <div id="stage"><%= image_tag("stage.png")%></div>
-    <div id="buffet"><%= image_tag("buffet.png")%></div>
+  <% end  %>
+
+
+  <div id="bar"><%= image_tag("bar.png")%></div>
+  <div id="stage"><%= image_tag("stage.png")%></div>
+  <div id="buffet"><%= image_tag("buffet.png")%></div>
 
 </div>
-
 

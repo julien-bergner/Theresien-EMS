@@ -45,7 +45,7 @@ $start-height: -25px;
   position: relative;
   background-color: #ffffff;
   width: 900px;
-  min-height: 200px;
+  min-height: 120px;
 
 
 
@@ -218,3 +218,7 @@ div.seat-10-vertical
     }
   }
 
+
+#next-button {
+  margin-bottom: 20px;
+}

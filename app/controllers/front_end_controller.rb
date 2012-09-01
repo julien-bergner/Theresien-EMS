@@ -16,6 +16,24 @@ class FrontEndController < ApplicationController
     end
   end
 
+  def receiveSelectedSeats
+    paramString = params[:selectedSeatsList];
+    selectedSeats = paramString.split(',');
+
+    @order = Order.create
+
+    @test = Seat.find_all_by_id(selectedSeats)
+
+    @test.each do |seat|
+      seat.order_id = @order.id
+      seat.status = 1
+      seat.save
+    end
+
+
+
+  end
+
   def photos
 
   end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status: MyString
+  amount: 
+  delivery_method: MyString
+  customer_id: 1
+
+two:
+  status: MyString
+  amount: 
+  delivery_method: MyString
+  customer_id: 1
