@@ -1,0 +1,23 @@
+
+<div id="selection-view-container">
+<h3>Sie haben folgende Karten gew&auml;hlt:</h3>
+<br/>
+<table class="table table-striped">
+
+    <% @displayedRows.each do |row| %>
+      <tr>
+        <% row.each do |field| %>
+        <td><h4><%= field.to_s %></h4></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+
+</table>
+
+<div id=change-seat-button-div>
+  <%= button_to("Ändern", "", {:class => "btn", :id => "change-seats-button"}) %>
+</div>
+<hr>
+
+</div>

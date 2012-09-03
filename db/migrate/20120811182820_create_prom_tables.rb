@@ -4,7 +4,8 @@ class CreatePromTables < ActiveRecord::Migration
       t.integer :position
       t.string :orientation
       t.string :caption
-      t.integer :price
+      t.string :seat_description
+      t.float :price
 
       t.timestamps
     end

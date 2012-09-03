@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(:version => 20120814123421) do
     t.integer  "position"
     t.string   "orientation"
     t.string   "caption"
-    t.integer  "price"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "seat_description"
+    t.float    "price"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "seats", :force => true do |t|
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20120814123421) do
     t.integer  "order_id"
     t.integer  "position"
     t.string   "caption"
-    t.integer  "price"
+    t.float    "price"
     t.integer  "status"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false

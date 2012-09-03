@@ -1,3 +1,19 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#selection-view-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+}
+
+#change-seat-button-div {
+  text-align: right;
+}
+
+#change-seats-button {
+  margin-right: 50px;
+}
+
+

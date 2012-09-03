@@ -17,19 +17,22 @@ class FrontEndController < ApplicationController
   end
 
   def receiveSelectedSeats
-    paramString = params[:selectedSeatsList];
-    selectedSeats = paramString.split(',');
+    selectedSeatsString = params[:selectedSeatsList];
+    selectedSeats = selectedSeatsString.split(',');
 
-    @order = Order.create
+    @order = Order.find_by_id(params[:order_id])
+    if @order.nil?
+      @order = Order.create
+    end
 
-    @test = Seat.find_all_by_id(selectedSeats)
-
-    @test.each do |seat|
+    Seat.find_all_by_id(selectedSeats).each do |seat|
       seat.order_id = @order.id
       seat.status = 1
       seat.save
     end
 
+
+    redirect_to(new_customer_path(:order_id => @order.id))
 
 
   end
