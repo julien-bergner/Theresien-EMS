@@ -1,62 +1,87 @@
+
+<div id="customer-form-container">
 <%= form_for @customer, :html => { :class => 'form-horizontal' } do |f| %>
+
+
+    <%= fields_for @order do |o| %>
+        <div class="control-group">
+          <%= o.label :delivery_method, "Versandart", :class => 'control-label' %>
+          <div class="controls">
+
+
+            <%= o.radio_button :delivery_method, "E-Mail" %>
+            <%= o.label :delivery_method_email, "E-Mail", :class => 'radio inline' %>
+          </div>
+          <div class="controls">
+            <%= o.radio_button :delivery_method, "Postversand" %>
+            <%= o.label :delivery_method_mail, "Postversand ( +0,55 &euro; )".html_safe, :class => 'radio inline' %>
+
+
+          </div>
+
+    <% end  %>
+
+    <hr>
+
   <div class="control-group">
-    <%= f.label :designation, :class => 'control-label' %>
+    <%= f.label :designation, "Anrede", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :designation, :class => 'text_field' %>
+
+
+      <%= f.radio_button :designation, "Herr" %>
+      <%= f.label :designation_male, "Herr", :class => 'radio inline' %>
+    </div>
+    <div class="controls">
+      <%= f.radio_button :designation, "Frau" %>
+      <%= f.label :designation_female, "Frau", :class => 'radio inline' %>
+
+
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :first_name, :class => 'control-label' %>
+    <%= f.label :first_name, "Vorname", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :first_name, :class => 'text_field' %>
+      <%= f.text_field :first_name, :class => 'text_field input-medium' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :last_name, :class => 'control-label' %>
+    <%= f.label :last_name, "Nachname", :class => 'control-label input-medium' %>
     <div class="controls">
-      <%= f.text_field :last_name, :class => 'text_field' %>
+      <%= f.text_field :last_name, :class => 'text_field input-medium' %>
     </div>
   </div>
+    <div class="control-group">
+      <%= f.label :email, "E-Mail", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :email, :class => 'text_field input-medium' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :childrens_class, "Kind(er) in Klasse", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :childrens_class, :class => 'text_field input-medium' %>
+      </div>
+    </div>
   <div class="control-group">
-    <%= f.label :street_name, :class => 'control-label' %>
+    <%= f.label :street_name, "Straße + Nr.", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :street_name, :class => 'text_field' %>
+      <%= f.text_field :street_name, :class => 'text_field input-street-name' %>
+      <%= f.text_field :street_number, :class => 'text_field input-street-number' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :street_number, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :street_number, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :zip_code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :zip_code, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :city, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :city, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :childrens_class, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :childrens_class, :class => 'text_field' %>
+    <%= f.label :zip_code, "PLZ + Ort", :class => 'control-label' %>
+    <div class="controls controls-row">
+      <%= f.text_field :zip_code, :class => 'text_field input-zip' %>
+      <%= f.text_field :city, :class => 'text_field input-city' %>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                customers_path, :class => 'btn' %>
+    <%= f.submit "Weiter", :class => 'btn btn-inverse' %>
+    <%= link_to "Abbrechen", customers_path, :class => 'btn' %>
   </div>
 <% end %>
+</div>
+</div>

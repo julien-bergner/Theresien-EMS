@@ -26,46 +26,7 @@ class CustomersController < ApplicationController
   # GET /customers/new
   # GET /customers/new.json
   def new
-
-    @order = Order.find_by_id(params[:order_id])
-
-    @seats = Seat.find_all_by_order_id(@order.id)
-
-    @numberOfSeatsPerTable = Hash.new
-    PromTable.all.each do |t|
-      @numberOfSeatsPerTable[t.id] = 0
-    end
-
-    @seats.each do |seat|
-      @numberOfSeatsPerTable[seat.prom_table_id] = @numberOfSeatsPerTable[seat.prom_table_id] + 1
-
-    end
-
-    @displayedRows = Array.new
-    @overallAmount = 0
-
-    @numberOfSeatsPerTable.each_key do |k|
-      unless @numberOfSeatsPerTable.fetch(k) == 0
-        numberOfSeats = @numberOfSeatsPerTable.fetch(k)
-        promTable = PromTable.find_by_id(k)
-        randomSeat = Seat.find_all_by_prom_table_id(k).pop()
-
-        price = randomSeat.price
-        cache = Array.new
-        cache.push(getNumberOfSeatsString(numberOfSeats, promTable))
-        cache.push(getTableString(promTable))
-        cache.push(getPerSeatString(numberOfSeats, randomSeat))
-        cache.push(getPriceString(getPrice(numberOfSeats, price, promTable)))
-
-        @displayedRows.push(cache)
-
-        @overallAmount += getPrice(numberOfSeats, price, promTable)
-      end
-    end
-
-    @displayedRows.push(getOverallPriceRow(@overallAmount))
-
-
+    prepareDataForSelectionViewer()
 
     @customer = Customer.new
 
@@ -83,6 +44,8 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+
+
     @customer = Customer.new(params[:customer])
 
     respond_to do |format|
@@ -122,6 +85,47 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_url }
       format.json { head :no_content }
     end
+  end
+
+  def prepareDataForSelectionViewer()
+    @order = Order.find_by_id(params[:order_id])
+
+    @seats = Seat.find_all_by_order_id(@order.id)
+
+    @numberOfSeatsPerTable = Hash.new
+    PromTable.all.each do |t|
+      @numberOfSeatsPerTable[t.id] = 0
+    end
+
+    @seats.each do |seat|
+      @numberOfSeatsPerTable[seat.prom_table_id] = @numberOfSeatsPerTable[seat.prom_table_id] + 1
+
+    end
+
+    @displayedRows = Array.new
+    @overallAmount = 0
+
+    @numberOfSeatsPerTable.each_key do |k|
+      unless @numberOfSeatsPerTable.fetch(k) == 0
+        numberOfSeats = @numberOfSeatsPerTable.fetch(k)
+        promTable = PromTable.find_by_id(k)
+        randomSeat = Seat.find_all_by_prom_table_id(k).pop()
+
+        price = randomSeat.price
+        cache = Array.new
+        cache.push(getNumberOfSeatsString(numberOfSeats, promTable))
+        cache.push(getTableString(promTable))
+        cache.push(getPerSeatString(numberOfSeats, randomSeat))
+        cache.push(getPriceString(getPrice(numberOfSeats, price, promTable)))
+
+        @displayedRows.push(cache)
+
+        @overallAmount += getPrice(numberOfSeats, price, promTable)
+      end
+    end
+
+    @displayedRows.push(getOverallPriceRow(@overallAmount))
+
   end
 
   def getNumberOfSeatsString(numberOfSeats, promTable)

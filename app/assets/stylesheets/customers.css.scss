@@ -8,12 +8,38 @@
   width: 400px;
 }
 
+#customer-form-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+}
+
 #change-seat-button-div {
   text-align: right;
 }
 
 #change-seats-button {
   margin-right: 50px;
+}
+
+.input-street-number {
+  width: 30px;
+}
+
+.input-street-name {
+  width: 105px;
+}
+
+.input-zip {
+  width: 40px;
+}
+
+.input-city {
+  width: 95px;
+}
+
+form .clearfix:before, form .clearfix:after {
+  display: inline;
 }
 
 
