@@ -1,0 +1,26 @@
+INSERT INTO `db_development`.`prom_tables`
+(`id`,
+`position`,
+`orientation`,
+`caption`,
+`seat_description`,
+`price`,
+`created_at`,
+`updated_at`)
+VALUES
+( 1 , 0 , 'promenade', '','Flanierkarte',250,0,0),
+( 2 , 1 , 'horizontal', 'Tisch 1','Platzkarte',250,0,0),
+( 3 , 2 , 'horizontal', 'Tisch 2','Platzkarte',250,0,0),
+( 4 , 3 , 'horizontal','Tisch 3','Platzkarte',250,0,0),
+( 5 , 4 , 'horizontal','Tisch 4','Platzkarte',250,0,0),
+( 6 , 5 , 'horizontal','Tisch 5','Platzkarte',250,0,0),
+( 7 , 6 , 'vertical','Tisch 6','Platzkarte',250,0,0),
+( 8 , 7 , 'vertical','Tisch 7','Platzkarte',250,0,0),
+( 9 , 8 , 'vertical','Tisch 8','Platzkarte',250,0,0),
+( 10 , 9 , 'vertical','Tisch 9','Platzkarte',250,0,0),
+( 11 , 10 , 'vertical','Tisch 10','Platzkarte',250,0,0),
+( 12 , 11 , 'vertical','Tisch 11','Platzkarte',250,0,0),
+( 13 , 12 , 'vertical','Tisch 12','Platzkarte',250,0,0),
+( 14 , 13 , 'vertical','Tisch 13','Platzkarte',250,0,0),
+( 15 , 14 , 'vertical','Tisch 14','Platzkarte',250,0,0),
+( 16 , 15 , 'vertical', 'Tisch 15','Platzkarte',250,0,0)
