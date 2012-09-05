@@ -20,9 +20,10 @@ class FrontEndController < ApplicationController
     selectedSeatsString = params[:selectedSeatsList];
     selectedSeats = selectedSeatsString.split(',');
 
-    @order = Order.find_by_id(params[:order_id])
+    @order = Order.find_by_id(session[:order_id])
     if @order.nil?
       @order = Order.create
+      session[:order_id] = @order.id
     end
 
     Seat.find_all_by_id(selectedSeats).each do |seat|
@@ -32,7 +33,7 @@ class FrontEndController < ApplicationController
     end
 
 
-    redirect_to(new_customer_path(:order_id => @order.id))
+    redirect_to(new_customer_path)
 
 
   end

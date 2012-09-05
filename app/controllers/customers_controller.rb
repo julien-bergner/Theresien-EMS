@@ -15,6 +15,7 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    prepareDataForSelectionViewer()
     @customer = Customer.find(params[:id])
 
     respond_to do |format|
@@ -38,6 +39,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    prepareDataForSelectionViewer()
     @customer = Customer.find(params[:id])
   end
 
@@ -45,6 +47,7 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
 
+    prepareDataForSelectionViewer()
 
     @customer = Customer.new(params[:customer])
 
@@ -62,6 +65,7 @@ class CustomersController < ApplicationController
   # PUT /customers/1
   # PUT /customers/1.json
   def update
+    prepareDataForSelectionViewer()
     @customer = Customer.find(params[:id])
 
     respond_to do |format|
@@ -88,7 +92,7 @@ class CustomersController < ApplicationController
   end
 
   def prepareDataForSelectionViewer()
-    @order = Order.find_by_id(params[:order_id])
+    @order = Order.find_by_id(session[:order_id])
 
     @seats = Seat.find_all_by_order_id(@order.id)
 

@@ -13,8 +13,8 @@
             <%= o.label :delivery_method_email, "E-Mail", :class => 'radio inline' %>
           </div>
           <div class="controls">
-            <%= o.radio_button :delivery_method, "Postversand" %>
-            <%= o.label :delivery_method_mail, "Postversand ( +0,55 &euro; )".html_safe, :class => 'radio inline' %>
+            <%= o.radio_button :delivery_method, "Hinterlegung" %>
+            <%= o.label :delivery_method_mail, "Hinterlegung an der Abendkasse".html_safe, :class => 'radio inline' %>
 
 
           </div>
@@ -62,21 +62,6 @@
         <%= f.text_field :childrens_class, :class => 'text_field input-medium' %>
       </div>
     </div>
-  <div class="control-group">
-    <%= f.label :street_name, "Straße + Nr.", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :street_name, :class => 'text_field input-street-name' %>
-      <%= f.text_field :street_number, :class => 'text_field input-street-number' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :zip_code, "PLZ + Ort", :class => 'control-label' %>
-    <div class="controls controls-row">
-      <%= f.text_field :zip_code, :class => 'text_field input-zip' %>
-      <%= f.text_field :city, :class => 'text_field input-city' %>
-    </div>
-  </div>
 
   <div class="form-actions">
     <%= f.submit "Weiter", :class => 'btn btn-inverse' %>

@@ -8,6 +8,12 @@
   width: 400px;
 }
 
+#customer-view-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+}
+
 #customer-form-container {
   position: relative;
   background-color: #ffffff;
@@ -19,6 +25,14 @@
 }
 
 #change-seats-button {
+  margin-right: 50px;
+}
+
+#edit-customer-button-div {
+  text-align: right;
+}
+
+#edit-customer-button {
   margin-right: 50px;
 }
 
