@@ -7,6 +7,11 @@ class FrontEndController < ApplicationController
   end
 
   def booking
+    @order = Order.find_by_id(session[:order_id])
+    if not @order.nil?
+      @selectedSeats = Seat.find_all_by_order_id(@order.id)
+    end
+
     @table_and_seat_data = Hash.new
 
     @prom_tables = PromTable.all
