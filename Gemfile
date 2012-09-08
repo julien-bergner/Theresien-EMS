@@ -10,7 +10,8 @@ gem 'less-rails'
 gem 'paypal'
 gem 'nokogiri'
 
-
+# Authentification
+gem 'devise', '~> 2.1.2'
 
 #gem 'railshoster'
 
@@ -21,7 +22,6 @@ group :assets do
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

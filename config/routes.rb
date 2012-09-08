@@ -1,4 +1,6 @@
 TheresienEms::Application.routes.draw do
+  devise_for :admins
+
   resources :orders
 
   resources :customers
