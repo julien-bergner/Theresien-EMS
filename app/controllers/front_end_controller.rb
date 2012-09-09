@@ -76,19 +76,21 @@ class FrontEndController < ApplicationController
   end
 
   def createCustomer
-
     prepareDataForSelectionViewer()
 
     @customer = Customer.new(params[:customer])
+    order = Order.find_by_id(session[:order_id])
+    order.customer = @customer
+    order.status = 0
+    order.delivery_method = params[:order][:delivery_method]
+    order.save
 
     respond_to do |format|
       if @customer.save
         session[:customer_id] = @customer.id
         format.html { redirect_to :showSummary }
-
       else
         format.html { render action: "newCustomer" }
-
       end
     end
   end
@@ -161,7 +163,8 @@ class FrontEndController < ApplicationController
     end
 
     @displayedRows.push(getOverallPriceRow(@overallAmount))
-
+    @order.amount = @overallAmount
+    @order.save
   end
 
   def getNumberOfSeatsString(numberOfSeats, promTable)
