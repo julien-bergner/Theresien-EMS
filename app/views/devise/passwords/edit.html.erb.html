@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/Projects/Theresien-EMS/app/views/devise/passwords/edit.html.erb.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v10">
+<meta name="syntax" content="eruby">
+<meta name="settings" content="number_lines,use_css,pre_wrap,expand_tabs">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #93a1a1; background-color: #002b36; }
+body { font-family: monospace; color: #93a1a1; background-color: #002b36; }
+.lnr { color: #657b83; background-color: #073642; }
+.Special { color: #dc322f; }
+.Identifier { color: #268bd2; }
+.Statement { color: #719e07; }
+.Constant { color: #2aa198; }
+.PreProc { color: #cb4b16; }
+.htmlEndTag { color: #657b83; }
+.Title { color: #cb4b16; font-weight: bold; }
+.htmlTagName { color: #268bd2; font-weight: bold; }
+.htmlTag { color: #657b83; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="lnr"> 1 </span><span class="htmlTag">&lt;</span><span class="htmlTagName">h2</span><span class="htmlTag">&gt;</span><span class="Title">Change your password</span><span class="htmlEndTag">&lt;/</span><span class="htmlTagName">h2</span><span class="htmlEndTag">&gt;</span>
+<span class="lnr"> 2 </span>
+<span class="lnr"> 3 </span><span class="PreProc">&lt;%=</span> form_for(resource, <span class="Constant">:as</span> =&gt; resource_name, <span class="Constant">:url</span> =&gt; password_path(resource_name), <span class="Constant">:html</span> =&gt; { <span class="Constant">:method</span> =&gt; <span class="Constant">:put</span> }) <span class="Statement">do</span> |<span class="Identifier">f</span>| <span class="PreProc">%&gt;</span>
+<span class="lnr"> 4 </span>  <span class="PreProc">&lt;%=</span> devise_error_messages! <span class="PreProc">%&gt;</span>
+<span class="lnr"> 5 </span>  <span class="PreProc">&lt;%=</span> f.hidden_field <span class="Constant">:reset_password_token</span> <span class="PreProc">%&gt;</span>
+<span class="lnr"> 6 </span>
+<span class="lnr"> 7 </span>  <span class="htmlTag">&lt;</span><span class="htmlTagName">div</span><span class="htmlTag">&gt;</span><span class="PreProc">&lt;%=</span> f.label <span class="Constant">:password</span>, <span class="Special">&quot;</span><span class="Constant">New password</span><span class="Special">&quot;</span> <span class="PreProc">%&gt;</span><span class="htmlTag">&lt;</span><span class="htmlTagName">br</span><span class="htmlTag"> /&gt;</span>
+<span class="lnr"> 8 </span>  <span class="PreProc">&lt;%=</span> f.password_field <span class="Constant">:password</span> <span class="PreProc">%&gt;</span><span class="htmlEndTag">&lt;/</span><span class="htmlTagName">div</span><span class="htmlEndTag">&gt;</span>
+<span class="lnr"> 9 </span>
+<span class="lnr">10 </span>  <span class="htmlTag">&lt;</span><span class="htmlTagName">div</span><span class="htmlTag">&gt;</span><span class="PreProc">&lt;%=</span> f.label <span class="Constant">:password_confirmation</span>, <span class="Special">&quot;</span><span class="Constant">Confirm new password</span><span class="Special">&quot;</span> <span class="PreProc">%&gt;</span><span class="htmlTag">&lt;</span><span class="htmlTagName">br</span><span class="htmlTag"> /&gt;</span>
+<span class="lnr">11 </span>  <span class="PreProc">&lt;%=</span> f.password_field <span class="Constant">:password_confirmation</span> <span class="PreProc">%&gt;</span><span class="htmlEndTag">&lt;/</span><span class="htmlTagName">div</span><span class="htmlEndTag">&gt;</span>
+<span class="lnr">12 </span>
+<span class="lnr">13 </span>  <span class="htmlTag">&lt;</span><span class="htmlTagName">div</span><span class="htmlTag">&gt;</span><span class="PreProc">&lt;%=</span> f.submit <span class="Special">&quot;</span><span class="Constant">Change my password</span><span class="Special">&quot;</span> <span class="PreProc">%&gt;</span><span class="htmlEndTag">&lt;/</span><span class="htmlTagName">div</span><span class="htmlEndTag">&gt;</span>
+<span class="lnr">14 </span><span class="PreProc">&lt;%</span> <span class="Statement">end</span> <span class="PreProc">%&gt;</span>
+<span class="lnr">15 </span>
+<span class="lnr">16 </span><span class="PreProc">&lt;%=</span> render <span class="Special">&quot;</span><span class="Constant">devise/shared/links</span><span class="Special">&quot;</span> <span class="PreProc">%&gt;</span>
+</pre>
+</body>
+</html>

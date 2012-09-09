@@ -13,6 +13,11 @@
           <li><%= link_to "Impressionen", :photos  %></li>
           <li><%= link_to "Sponsoren", :sponsors  %></li>
           <li><%= link_to "Kontakt", :contact  %></li>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to "Abmelden", destroy_admin_session_path, :method => :delete %>
+            </li>
+          <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
