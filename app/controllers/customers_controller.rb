@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_filter :authenticate_admin!
+
   # GET /customers
   # GET /customers.json
   def index
