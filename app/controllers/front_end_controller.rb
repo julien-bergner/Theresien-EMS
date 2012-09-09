@@ -9,9 +9,21 @@ class FrontEndController < ApplicationController
 
   def booking
     @order = Order.find_by_id(session[:order_id])
-    if not @order.nil?
+    unless @order.nil?
       @selectedSeats = Seat.find_all_by_order_id(@order.id)
       prepareDataForSelectionViewer()
+    else
+      @numberOfSeatsPerTable = Hash.new
+      PromTable.all.each do |t|
+        @numberOfSeatsPerTable[t.id] = 0
+      end
+    end
+
+    @numberOfSeatsPerTableArray = Array.new
+
+    @numberOfSeatsPerTable.each_key do |k|
+      @numberOfSeatsPerTableArray << @numberOfSeatsPerTable.fetch(k)
+
 
     end
 
@@ -32,6 +44,12 @@ class FrontEndController < ApplicationController
     if @order.nil?
       @order = Order.create
       session[:order_id] = @order.id
+    end
+
+    Seat.find_all_by_order_id(@order.id).each do |seat|
+      seat.order_id = nil
+      seat.status = 0
+      seat.save
     end
 
     Seat.find_all_by_id(selectedSeats).each do |seat|

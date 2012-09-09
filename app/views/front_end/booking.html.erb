@@ -3,11 +3,9 @@
 </div>
 
 
-
 <%= javascript_tag do %>
-    window.numberOfSeatsPerTable = <%=raw @numberOfSeatsPerTable.to_json %>;
+  var tableLists = <%= @numberOfSeatsPerTableArray.to_s %>;
 <% end %>
-
 
 
 <div id="selection-container">

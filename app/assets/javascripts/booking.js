@@ -1,4 +1,9 @@
 
+var selectedSeatsArray = new Array();
+var numberOfTables = 16;
+
+
+
 $(function(){
     $(".seat").click(function() {
         var img = $(this);
@@ -73,16 +78,6 @@ function updateButton() {
 
 
 
-}
-
-var tableLists = new Array();
-var selectedSeatsArray = new Array();
-var numberOfTables = 16;
-
-//initialize selectedSeats array
-for (var i = 0; i < numberOfTables; i++)
-{
-    tableLists.unshift(0);
 }
 
 function addSeatToTableList(num)
@@ -180,3 +175,10 @@ function writeSelectedSeatsList() {
     var selectedSeatsField = $("#selectedSeatsList");
     selectedSeatsField.attr('value', selectedSeatsArray.toString());
 }
+
+jQuery(document).ready(function($) {
+    writeTextOutput();
+    writeSelectedSeatsList();
+    updateButton();
+
+});
