@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # showSummary.html.erb
       format.json { render json: @order }
     end
   end
