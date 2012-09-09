@@ -5,6 +5,11 @@
 
 <%= javascript_tag do %>
   var tableLists = <%= @numberOfSeatsPerTableArray.to_s %>;
+  <% unless @selectedSeatsIds.empty? %>
+    var selectedSeatsArray = <%= @selectedSeatsIds.to_s %>
+  <% else %>
+    var selectedSeatsArray = new Array();
+  <% end %>
 <% end %>
 
 

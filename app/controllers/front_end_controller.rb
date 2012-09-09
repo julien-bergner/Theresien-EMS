@@ -12,12 +12,17 @@ class FrontEndController < ApplicationController
     unless @order.nil?
       @selectedSeats = Seat.find_all_by_order_id(@order.id)
       prepareDataForSelectionViewer()
+      @selectedSeatsIds = Array.new
+      @selectedSeats.each { |seat| @selectedSeatsIds << seat.id }
+
     else
       @numberOfSeatsPerTable = Hash.new
       PromTable.all.each do |t|
         @numberOfSeatsPerTable[t.id] = 0
       end
     end
+
+
 
     @numberOfSeatsPerTableArray = Array.new
 

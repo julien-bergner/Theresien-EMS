@@ -1,5 +1,5 @@
 
-var selectedSeatsArray = new Array();
+
 var numberOfTables = 16;
 
 
