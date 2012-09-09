@@ -1,5 +1,5 @@
-<% if (not @displayedRows.nil?) and (not @order.nil?) %>
-<%= render :partial => 'selectionViewer' %>
-<%	end %>
+<h1>New customer</h1>
 
-<%= render :partial => 'form' %>
+<%= render 'form' %>
+
+<%= link_to 'Back', customers_path %>

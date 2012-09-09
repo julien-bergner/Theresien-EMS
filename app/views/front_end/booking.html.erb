@@ -4,6 +4,12 @@
 
 
 
+<%= javascript_tag do %>
+    window.numberOfSeatsPerTable = <%=raw @numberOfSeatsPerTable.to_json %>;
+<% end %>
+
+
+
 <div id="selection-container">
 
   <h3>Bitte w&auml;hlen Sie die Pl&auml;tze aus, die Sie bestellen m&ouml;chten:</h3>

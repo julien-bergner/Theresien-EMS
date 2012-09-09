@@ -1,72 +1,53 @@
+<%= form_for(@customer) do |f| %>
+    <% if @customer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
-<div id="customer-form-container">
-<%= form_for @customer, :html => { :class => 'form-horizontal' } do |f| %>
+          <ul>
+            <% @customer.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-
-    <%= fields_for @order do |o| %>
-        <div class="control-group">
-          <%= o.label :delivery_method, "Versandart", :class => 'control-label' %>
-          <div class="controls">
-
-
-            <%= o.radio_button :delivery_method, "E-Mail" %>
-            <%= o.label :delivery_method_email, "E-Mail", :class => 'radio inline' %>
-          </div>
-          <div class="controls">
-            <%= o.radio_button :delivery_method, "Hinterlegung" %>
-            <%= o.label :delivery_method_mail, "Hinterlegung an der Abendkasse".html_safe, :class => 'radio inline' %>
-
-
-          </div>
-
-    <% end  %>
-
-    <hr>
-
-  <div class="control-group">
-    <%= f.label :designation, "Anrede", :class => 'control-label' %>
-    <div class="controls">
-
-
-      <%= f.radio_button :designation, "Herr" %>
-      <%= f.label :designation_male, "Herr", :class => 'radio inline' %>
+    <div class="field">
+      <%= f.label :designation %><br />
+      <%= f.text_field :designation %>
     </div>
-    <div class="controls">
-      <%= f.radio_button :designation, "Frau" %>
-      <%= f.label :designation_female, "Frau", :class => 'radio inline' %>
-
-
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :first_name, "Vorname", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :first_name, :class => 'text_field input-medium' %>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_name, "Nachname", :class => 'control-label input-medium' %>
-    <div class="controls">
-      <%= f.text_field :last_name, :class => 'text_field input-medium' %>
+    <div class="field">
+      <%= f.label :street_name %><br />
+      <%= f.text_field :street_name %>
     </div>
-  </div>
-    <div class="control-group">
-      <%= f.label :email, "E-Mail", :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :email, :class => 'text_field input-medium' %>
-      </div>
+    <div class="field">
+      <%= f.label :street_number %><br />
+      <%= f.text_field :street_number %>
     </div>
-    <div class="control-group">
-      <%= f.label :childrens_class, "Kind(er) in Klasse", :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :childrens_class, :class => 'text_field input-medium' %>
-      </div>
+    <div class="field">
+      <%= f.label :zip_code %><br />
+      <%= f.text_field :zip_code %>
     </div>
-
-  <div class="form-actions">
-    <%= f.submit "Weiter", :class => 'btn btn-inverse' %>
-    <%= link_to "Abbrechen", customers_path, :class => 'btn' %>
-  </div>
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :childrens_class %><br />
+      <%= f.text_field :childrens_class %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
-</div>
-</div>

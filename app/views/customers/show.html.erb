@@ -1,37 +1,50 @@
-<div class="page-header">
-  <h1>Zusammenfassung</h1>
-</div>
+<p id="notice"><%= notice %></p>
 
-<%= render :partial => 'selectionViewer' %>
+<p>
+  <b>Designation:</b>
+  <%= @customer.designation %>
+</p>
 
-<div id="customer-view-container">
-  <h3>Ihre Angaben:</h3>
-  <br>
-<dl class="dl-horizontal">
-  <% unless @customer.designation.nil? %>
-  <dt class="customer-view-element">Anrede:</dt>
-  <dd class="customer-view-element"><%= @customer.designation %></dd>
-  <br>
-  <% end	  %>
-  <dt class="customer-view-element">Vorname:</dt>
-  <dd class="customer-view-element"><%= @customer.first_name %></dd>
-  <br>
-  <dt class="customer-view-element">Nachname:</dt>
-  <dd class="customer-view-element"><%= @customer.last_name %></dd>
-  <br>
-  <dt class="customer-view-element">E-Mail-Adresse:</dt>
-  <dd class="customer-view-element"><%= @customer.email %></dd>
+<p>
+  <b>First name:</b>
+  <%= @customer.first_name %>
+</p>
 
-  <% if @customer.childrens_class != '' %>
-  <br>
-  <dt class="customer-view-element">Kinder in Klasse:</dt>
-  <dd class="customer-view-element"><%= @customer.childrens_class %></dd>
-  <% end	  %>
-</dl>
+<p>
+  <b>Last name:</b>
+  <%= @customer.last_name %>
+</p>
 
-<div id=edit-customer-button-div>
-    <%= link_to("Ändern", edit_customer_path(@customer), {:class => "btn", :id => "edit-customer-button"}) %>
-</div>
+<p>
+  <b>Street name:</b>
+  <%= @customer.street_name %>
+</p>
 
-<hr>
-</div>
+<p>
+  <b>Street number:</b>
+  <%= @customer.street_number %>
+</p>
+
+<p>
+  <b>Zip code:</b>
+  <%= @customer.zip_code %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @customer.city %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <b>Childrens class:</b>
+  <%= @customer.childrens_class %>
+</p>
+
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
