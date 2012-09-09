@@ -10,7 +10,14 @@
 <dl class="dl-horizontal">
   <% unless @customer.designation.nil? %>
   <dt class="customer-view-element">Anrede:</dt>
-  <dd class="customer-view-element"><%= @customer.designation %></dd>
+  <dd class="customer-view-element">
+    <% if @customer.designation == "male" %>
+    Herr
+    <% else if @customer .designation == "female" %>
+    Frau
+    <% end %>
+    <% end %>
+  </dd>
   <br>
   <% end	  %>
   <dt class="customer-view-element">Vorname:</dt>

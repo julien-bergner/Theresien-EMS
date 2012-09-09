@@ -7,6 +7,14 @@ class FrontEndController < ApplicationController
 
   end
 
+  def customer
+    if session[:customer_id].nil?
+      redirect_to :newCustomer
+    else
+      redirect_to :editCustomer, :id => session[:customer_id]
+    end
+  end
+
   def booking
     @order = Order.find_by_id(session[:order_id])
     unless @order.nil?
@@ -64,7 +72,7 @@ class FrontEndController < ApplicationController
     end
 
 
-    redirect_to :newCustomer
+    redirect_to :customer
 
 
   end
@@ -84,11 +92,13 @@ class FrontEndController < ApplicationController
     prepareDataForSelectionViewer()
 
     @customer = Customer.new(params[:customer])
-    order = Order.find_by_id(session[:order_id])
-    order.customer = @customer
-    order.status = 0
-    order.delivery_method = params[:order][:delivery_method]
-    order.save
+    @order = Order.find_by_id(session[:order_id])
+    @order.customer = @customer
+    @order.status = "IN-PROGRESS"
+    unless params[:order].nil?
+      @order.delivery_method = params[:order][:delivery_method]
+    end
+    @order.save
 
     respond_to do |format|
       if @customer.save
@@ -168,7 +178,7 @@ class FrontEndController < ApplicationController
     end
 
     @displayedRows.push(getOverallPriceRow(@overallAmount))
-    @order.amount = @overallAmount
+    @order.amount = getOverallPrice(@overallAmount)
     @order.save
   end
 
@@ -220,7 +230,7 @@ class FrontEndController < ApplicationController
     return number
   end
 
-  def getOverallPriceRow(overallAmount)
+  def getOverallPrice(overallAmount)
     truncatedAmount = truncateFloatIfIsWholeNumber(overallAmount)
 
     if truncatedAmount.is_a?(Float)
@@ -228,7 +238,12 @@ class FrontEndController < ApplicationController
     else
       roundedAmount = truncatedAmount
     end
-    Array["","", "Gesamt", " = #{roundedAmount} &euro;".html_safe]
+    return roundedAmount
+  end
+
+  def getOverallPriceRow(overallAmount)
+
+    Array["","", "Gesamt", " = #{getOverallPrice(overallAmount)} &euro;".html_safe]
   end
 
   def cancel
@@ -271,6 +286,13 @@ class FrontEndController < ApplicationController
   end
 
   def payment
+    @order = Order.find(session[:order_id])
+    @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
+
+
+  end
+
+  def bankData
 
   end
 

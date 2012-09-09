@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Gesamtpreis: <%= @amount %></h1>
+</div>
+
+<div id="payment-container">
+
+<h3>a) Zahlen mit <%= link_to(image_tag("paypal.gif", :border=>0), @order.paypal_url("http://www.theresienball.de")) %> </h3>
+<br/>
+<h3>b) Zahlen per &nbsp; <%= link_to "klassischer Banküberweisung", :bankData, {:class => 'btn', :id => "bank-transfer-button"} %></h3>
+<br/>
+<hr>
+<div id=payment-buttom-button-div>
+  <%= link_to "Zurück", :showSummary, {:class => "btn", :id => "payment-back-button"} %>
+  <%= link_to "Abbrechen", :cancel, {:class => "btn", :id => "payment-cancel-button"} %>
+</div>
+
+</div>
