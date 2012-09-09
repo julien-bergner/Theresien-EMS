@@ -207,13 +207,63 @@ class FrontEndController < ApplicationController
 
   def truncateFloatIfIsWholeNumber(number)
     if number.modulo(2) == 0 or number.modulo(2) == 1
-      number = number.truncate()
+      number = number.to_int
     end
     return number
   end
 
   def getOverallPriceRow(overallAmount)
-    Array["","", "Gesamt", " = #{overallAmount} &euro;".html_safe]
+    truncatedAmount = truncateFloatIfIsWholeNumber(overallAmount)
+
+    if truncatedAmount.is_a?(Float)
+      roundedAmount = truncatedAmount.round(2)
+    else
+      roundedAmount = truncatedAmount
+    end
+    Array["","", "Gesamt", " = #{roundedAmount} &euro;".html_safe]
+  end
+
+  def cancel
+    releaseSeats()
+    releaseCustomer()
+    reset_session()
+    redirect_to root_path
+  end
+
+  def releaseSeats()
+    @order_id = session[:order_id]
+
+    unless @order_id.nil?
+      Seat.find_all_by_order_id(@order_id).each do |seat|
+        seat.order_id = nil
+        seat.status = 0
+        seat.save
+      end
+    end
+
+  end
+
+  def releaseCustomer
+    @customer_id = session[:customer_id]
+
+    unless @customer_id.nil?
+      @customer = Customer.find(@customer_id)
+      @customer.destroy
+    end
+  end
+
+  def releaseOrder
+    @order_id = session[:order_id]
+
+    unless @order_id.nil?
+      @order = Order.find(@order_id)
+      @order.destroy
+    end
+
+  end
+
+  def payment
+
   end
 
   def photos

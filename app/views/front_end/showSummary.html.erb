@@ -30,8 +30,13 @@
 </dl>
 
 <div id=edit-customer-button-div>
-    <%= link_to "Ändern", :editCustomer, {:class => "btn", :id => "edit-customer-button"} %>
+    <%= link_to("Ändern", :editCustomer, {:class => "btn", :id => "edit-customer-button"}) %>
 </div>
 
 <hr>
+
+<div id=summary-button-div>
+    <%= link_to "Bezahlen", :payment, {:class => "btn btn-inverse", :id => "summary-next-button"} %>
+    <%= link_to "Abbrechen", :cancel, {:class => "btn", :id => "summary-cancel-button"} %>
+  </div>
 </div>

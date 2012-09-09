@@ -13,6 +13,9 @@ TheresienEms::Application.routes.draw do
   match 'front_end/createCustomer' => 'FrontEnd#createCustomer', :as => :createCustomer
   match 'front_end/editCustomer' => 'FrontEnd#editCustomer', :as => :editCustomer
   match 'front_end/showSummary' => 'FrontEnd#showSummary', :as => :showSummary
+  match 'front_end/payment' => 'FrontEnd#payment', :as => :payment
+  match 'front_end/cancel' => 'FrontEnd#cancel', :as => :cancel
+
   match 'front_end/photos' => 'FrontEnd#photos', :as => :photos
   match 'front_end/sponsors' => 'FrontEnd#sponsors', :as => :sponsors
   match 'front_end/contact' => 'FrontEnd#contact', :as => :contact
