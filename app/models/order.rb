@@ -90,7 +90,7 @@ class Order < ActiveRecord::Base
 
   def getPricePerSeat(numberOfSeats, randomSeat)
     if numberOfSeats == 10
-      return ""
+      return "#{truncateFloatIfIsWholeNumber(25)}".html_safe
     else
       return "#{truncateFloatIfIsWholeNumber(randomSeat.price)}".html_safe
     end
