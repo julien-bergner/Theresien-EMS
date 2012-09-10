@@ -74,7 +74,7 @@ $start-height: -25px;
       $adjustment-factor: ($k - 5);
       #table-#{$k} {
           position:absolute;
-          left: 900px - 87px * $adjustment-factor; top: 560px;
+          left: 913px - 90px * $adjustment-factor; top: 560px;
       }
 
   }
@@ -304,4 +304,8 @@ form .clearfix:before, form .clearfix:after {
 
 #bank-transfer-button {
   width: 210px;
+}
+
+#summary-cancel-button {
+  vertical-align: bottom;
 }
