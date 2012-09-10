@@ -37,11 +37,12 @@
 
         <% if table.position.to_s == "0"  %>
             <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Flanierkarten</h3></div>
+            <% count = 1 %>
             <% seats.each do |seat| %>
-                <% if seat.id <= 5  %>
+
                     <% name = getStatusString(seat) + '?' + table.position.to_s	  %>
-                    <div class=seat-<%= seat.id %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag(getIconPath(seat), :id => seat.id, :class => 'seat', :name => name)%></div>
-                <% end  %>
+                    <div class=seat-<%= count %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag(getIconPath(seat), :id => seat.id, :class => 'seat', :name => name)%></div>
+                    <% count += 1 %>
             <% end  %>
         <% else %>
             <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Tisch <%= table.position %></h3></div>

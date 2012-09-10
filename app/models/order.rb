@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :seats
 
   def paypal_url(return_url)
+
     values = {
         :business => 'paypal_1347215984_biz@bergner.fr',
         :cmd => '_cart',

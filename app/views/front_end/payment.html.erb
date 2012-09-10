@@ -4,7 +4,7 @@
 
 <div id="payment-container">
 
-<h3>a) Zahlen mit <%= link_to(image_tag("paypal.gif", :border=>0), @order.paypal_url("http://www.theresienball.de")) %> </h3>
+<h3>a) Zahlen mit <%= link_to(image_tag("paypal.gif", :border=>0), :goToPaypal) %> </h3>
 <br/>
 <h3>b) Zahlen per &nbsp; <%= link_to "klassischer Banküberweisung", :bankData, {:class => 'btn', :id => "bank-transfer-button"} %></h3>
 <br/>

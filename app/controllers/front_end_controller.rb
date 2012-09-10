@@ -45,6 +45,25 @@ class FrontEndController < ApplicationController
     @prom_tables = PromTable.all
     for prom_table in @prom_tables do
       seats_at_table = Seat.find_all_by_prom_table_id(prom_table.id)
+      # Select the first five Flanierkarten to be displayed
+      if prom_table.id == 1
+        if session[:displayedPromenadeSeats].nil?
+          cache = Array.new
+          count = 1
+          seats_at_table.each do |seat|
+            if count <= 5
+              if seat.status == 0
+                count += 1
+                cache << seat
+              end
+            else
+              break
+            end
+          end
+          session[:displayedPromenadeSeats] = cache
+        end
+        seats_at_table = session[:displayedPromenadeSeats]
+      end
       @table_and_seat_data.store(prom_table, seats_at_table)
     end
   end
@@ -288,12 +307,18 @@ class FrontEndController < ApplicationController
   def payment
     @order = Order.find(session[:order_id])
     @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
+  end
 
-
+  def goToPaypal
+    @order = Order.find(session[:order_id])
+    redirect_to @order.paypal_url("http://www.theresienball.de")
+    reset_session
   end
 
   def bankData
-
+    @order = Order.find(session[:order_id])
+    @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
+    reset_session
   end
 
   def photos
