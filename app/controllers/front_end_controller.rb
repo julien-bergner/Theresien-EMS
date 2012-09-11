@@ -342,7 +342,7 @@ class FrontEndController < ApplicationController
       return
     end
     @order = Order.find(session[:order_id])
-    redirect_to @order.paypal_url("http://www.theresienball.de/front_end/paypalReturn")
+    redirect_to @order.paypal_url("http://theresienball.herokuapp.com/front_end/paypalReturn")
     reset_session
   end
 
