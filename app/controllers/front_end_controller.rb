@@ -119,7 +119,12 @@ class FrontEndController < ApplicationController
     end
     prepareDataForSelectionViewer()
 
-    @customer = Customer.new(params[:customer])
+    if session[:customer_id].nil?
+      @customer = Customer.new(params[:customer])
+    else
+      @customer = Customer.find(session[:customer_id])
+    end
+
     @order = Order.find_by_id(session[:order_id])
     @order.customer = @customer
     @order.status = "IN-PROGRESS"
