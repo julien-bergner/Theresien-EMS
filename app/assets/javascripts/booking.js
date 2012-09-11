@@ -177,8 +177,11 @@ function writeSelectedSeatsList() {
 }
 
 jQuery(document).ready(function($) {
-    writeTextOutput();
-    writeSelectedSeatsList();
-    updateButton();
+    if( (tableLists != null) && (selectedSeatsArray != null)) {
+        writeTextOutput();
+        writeSelectedSeatsList();
+        updateButton();
+    }
+
 
 });
