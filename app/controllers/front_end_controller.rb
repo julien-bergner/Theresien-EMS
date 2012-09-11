@@ -97,6 +97,11 @@ class FrontEndController < ApplicationController
   end
 
   def newCustomer
+    if session[:order_id].nil?
+      redirect_to :root
+      return
+    end
+
     prepareDataForSelectionViewer()
 
     @customer = Customer.new
@@ -108,6 +113,10 @@ class FrontEndController < ApplicationController
   end
 
   def createCustomer
+    if session[:order_id].nil?
+      redirect_to :root
+      return
+    end
     prepareDataForSelectionViewer()
 
     @customer = Customer.new(params[:customer])
@@ -130,6 +139,10 @@ class FrontEndController < ApplicationController
   end
 
   def showSummary
+    if session[:customer_id].nil?
+      redirect_to :root
+      return
+    end
     prepareDataForSelectionViewer()
     @customer = Customer.find(session[:customer_id])
 
@@ -140,11 +153,20 @@ class FrontEndController < ApplicationController
   end
 
   def editCustomer
+    if session[:customer_id].nil?
+      redirect_to :root
+      return
+    end
     prepareDataForSelectionViewer()
     @customer = Customer.find(session[:customer_id])
   end
 
   def updateCustomer
+    if session[:customer_id].nil?
+      redirect_to :root
+      return
+    end
+
     prepareDataForSelectionViewer()
     @customer = Customer.find(session[:customer_id])
 
@@ -305,18 +327,36 @@ class FrontEndController < ApplicationController
   end
 
   def payment
+    if session[:order_id].nil?
+      redirect_to :root
+      return
+    end
+
     @order = Order.find(session[:order_id])
     @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
   end
 
   def goToPaypal
+    if session[:order_id].nil?
+      redirect_to :root
+      return
+    end
     @order = Order.find(session[:order_id])
-    redirect_to @order.paypal_url("http://www.theresienball.de")
+    redirect_to @order.paypal_url("http://www.theresienball.de/front_end/paypalReturn")
     reset_session
   end
 
+  def paypalReturn
+
+  end
+
   def bankData
+    if session[:order_id].nil?
+      redirect_to :root
+      return
+    end
     @order = Order.find(session[:order_id])
+
     @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
     reset_session
   end
