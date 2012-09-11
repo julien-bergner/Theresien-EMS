@@ -16,6 +16,7 @@ TheresienEms::Application.routes.draw do
   match 'front_end/showSummary' => 'FrontEnd#showSummary', :as => :showSummary
   match 'front_end/payment' => 'FrontEnd#payment', :as => :payment
   match 'front_end/goToPaypal' => 'FrontEnd#goToPaypal', :as => :goToPaypal
+  match 'front_end/paypalReturn' => 'FrontEnd#paypalReturn', :as => :paypalReturn
   match 'front_end/cancel' => 'FrontEnd#cancel', :as => :cancel
   match 'front_end/bankData' => 'FrontEnd#bankData', :as => :bankData
 
