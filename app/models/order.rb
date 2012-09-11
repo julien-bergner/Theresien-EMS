@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
   def paypal_url(return_url)
 
     values = {
-        :business => 'paypal_1347215984_biz@bergner.fr',
+        :business => 'theresienball@theresienschule.de',
         :cmd => '_cart',
         :upload => 1,
         :return => return_url,
@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
                     })
     end
     values.merge! ({"currency_code" => "EUR"})
-    return "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+    return "https://www.paypal.com/cgi-bin/webscr?" + values.to_query
   end
 
   def prepareDataForSelectionViewer()
