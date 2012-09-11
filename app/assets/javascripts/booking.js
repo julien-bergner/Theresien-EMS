@@ -29,7 +29,7 @@ $(function(){
 function ManageSelection(img)
 {
     var name = img.attr('name');
-    var id = img.attr('id');
+    var id = eval(img.attr('id'));
     var parts = name.split('?');
     if (parts[0] == "occupied")
         alert('Dieser Platz ist bereits vergeben. Bitte wählen Sie einen anderen Platz aus!');
