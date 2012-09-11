@@ -4,7 +4,7 @@
 
 
 <%= javascript_tag do %>
-  var tableLists = <%= @numberOfSeatsPerTableArray.to_s %>;
+   tableLists = <%= @numberOfSeatsPerTableArray.to_s %>;
   <% unless @selectedSeatsIds.nil? %>
     selectedSeatsArray = <%= @selectedSeatsIds.to_s %>
   <% else %>
