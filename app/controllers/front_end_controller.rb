@@ -7,7 +7,7 @@ class FrontEndController < ApplicationController
 
   end
 
-  def customer
+  def switchCustomer
     if session[:customer_id].nil?
       redirect_to :newCustomer
     else
