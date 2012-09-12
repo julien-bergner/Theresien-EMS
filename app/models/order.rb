@@ -116,7 +116,14 @@ class Order < ActiveRecord::Base
     return number
   end
 
-
-
+  def getSeatsPerTable
+    seatsPerTable = Hash.new
+    self.seats.each do |seat|
+      table = seat.prom_table
+      seatsPerTable[table] ||= Array.new
+      seatsPerTable[table].push(seat)
+    end
+    return seatsPerTable
+  end
 
 end
