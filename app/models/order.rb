@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
   def paypal_url(return_url)
 
     values = {
-        :business => 'theresienball@theresienschule.de',
+        :business => 'paypal_1347215984_biz@bergner.fr',
         :cmd => '_cart',
         :upload => 1,
         :return => return_url,
@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
                     })
     end
     values.merge! ({"currency_code" => "EUR"})
-    return "https://www.paypal.com/cgi-bin/webscr?" + values.to_query
+    return "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
   end
 
   def prepareDataForSelectionViewer()
@@ -116,7 +116,14 @@ class Order < ActiveRecord::Base
     return number
   end
 
-
-
+  def getSeatsPerTable
+    seatsPerTable = Hash.new
+    self.seats.each do |seat|
+      table = seat.prom_table
+      seatsPerTable[table] ||= Array.new
+      seatsPerTable[table].push(seat)
+    end
+    return seatsPerTable
+  end
 
 end
