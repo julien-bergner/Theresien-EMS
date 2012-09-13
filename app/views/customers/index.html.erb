@@ -13,7 +13,7 @@
   <% @customers.each do |customer| %>
       <tr>
         <td><%= link_to "#{(customer.designation == "female") ? "Frau" : "Herr"} #{customer.full_name}", customer %></td>
-        <td><%= customer.email %></td>
+        <td><%= mail_to customer.email %></td>
         <td><%= customer.childrens_class %></td>
         <td>
           <ol>
@@ -24,6 +24,7 @@
                     <%= "#{table.caption}: #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}" %>
                     <br />
                   <% end %>
+                  <i>(<%= order.status %>)</i>
                 </li>
               <% end %>
             <% end %>
