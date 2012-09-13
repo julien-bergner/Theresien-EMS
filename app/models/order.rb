@@ -110,7 +110,7 @@ class Order < ActiveRecord::Base
   end
 
   def truncateFloatIfIsWholeNumber(number)
-    if number.modulo(2) == 0 or number.modulo(2) == 1
+    if number.modulo(1) == 0
       number = number.to_int
     end
     return number

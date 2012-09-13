@@ -1,39 +1,38 @@
 <h1>Listing customers</h1>
 
-<table>
+<table class="table">
   <tr>
-    <th>Designation</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Street name</th>
-    <th>Street number</th>
-    <th>Zip code</th>
-    <th>City</th>
+    <th>Name</th>
     <th>Email</th>
-    <th>Childrens class</th>
-    <th></th>
+    <th>Children's<br/>class</th>
+    <th>Orders</th>
     <th></th>
     <th></th>
   </tr>
 
   <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.designation %></td>
-        <td><%= customer.first_name %></td>
-        <td><%= customer.last_name %></td>
-        <td><%= customer.street_name %></td>
-        <td><%= customer.street_number %></td>
-        <td><%= customer.zip_code %></td>
-        <td><%= customer.city %></td>
-        <td><%= customer.email %></td>
+        <td><%= link_to "#{(customer.designation == "female") ? "Frau" : "Herr"} #{customer.full_name}", customer %></td>
+        <td><%= mail_to customer.email %></td>
         <td><%= customer.childrens_class %></td>
-        <td><%= link_to 'Show', customer %></td>
+        <td>
+          <ol>
+            <% customer.orders.each do |order| %>
+              <li>
+                <% order.getSeatsPerTable.each do |table, seats| %>
+                  <%= "#{table.caption}: #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}" %>
+                  <br />
+                <% end %>
+                <i>(<%= "#{order.amount.round(2)} €, #{order.status}" %>)</i><br />
+                <%= link_to "view", order %> |  <%= link_to "mark as payed", "#", :confirm => "Are you sure to mark this order as payed?" %>
+              </li>
+            <% end %>
+          </ol>
+        </td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Customer', new_customer_path %>

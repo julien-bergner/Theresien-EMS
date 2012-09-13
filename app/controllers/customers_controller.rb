@@ -23,17 +23,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /customers/new
-  # GET /customers/new.json
-  def new
-    @customer = Customer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @customer }
-    end
-  end
-
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])

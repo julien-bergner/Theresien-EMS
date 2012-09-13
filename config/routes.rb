@@ -9,7 +9,7 @@ TheresienEms::Application.routes.draw do
 
   match 'front_end/booking' => 'FrontEnd#booking', :as => :booking
   match 'front_end/receiveSelectedSeats' => 'FrontEnd#receiveSelectedSeats', :as => :receiveSelectedSeats
-  match 'front_end/customer' => 'FrontEnd#customer', :as => :customer
+  match 'front_end/switchCustomer' => 'FrontEnd#switchCustomer', :as => :switchCustomer
   match 'front_end/newCustomer' => 'FrontEnd#newCustomer', :as => :newCustomer
   match 'front_end/createCustomer' => 'FrontEnd#createCustomer', :as => :createCustomer
   match 'front_end/editCustomer' => 'FrontEnd#editCustomer', :as => :editCustomer
