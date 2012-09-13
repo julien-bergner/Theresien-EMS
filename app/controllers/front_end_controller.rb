@@ -90,10 +90,7 @@ class FrontEndController < ApplicationController
       seat.save
     end
 
-
-    redirect_to :customer
-
-
+    redirect_to :switchCustomer
   end
 
   def newCustomer
@@ -108,7 +105,6 @@ class FrontEndController < ApplicationController
 
     respond_to do |format|
       format.html # newCustomer.html.erb
-
     end
   end
 
