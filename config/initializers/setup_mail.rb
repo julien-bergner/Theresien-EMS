@@ -12,7 +12,7 @@ ActionMailer::Base.smtp_settings = {
 class DevelopmentMailInterceptor
   def self.delivering_email(message)
     message.subject = "[#{message.to}] #{message.subject}"
-    message.to      = "nicolas.fricke@gmail.com"
+    message.to      = "julien@bergner.fr"
   end
 end
 

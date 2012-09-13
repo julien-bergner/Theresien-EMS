@@ -1,1 +1,26 @@
-Danke für Ihre Bestellung!
+Sehr <%= if @customer.designation == "female" then "geehrte Frau #{@customer.last_name}"; else "geehrter Herr #{@customer.last_name}" end  %>,
+
+wir haben folgende Karten für Sie vorgemerkt:
+<% @order.getSeatsPerTable.each { |table, seats|  %>
+<%= seats.length -%>
+<%= if seats.length > 1 then " #{table.seat_description}n"; else " #{table.seat_description}" end -%>
+<%= if table.id != 1 then " an #{table.caption}" end -%>
+<%= " à #{seats.first.price} €" -%>
+<%= " = #{seats.first.price * seats.length} €" -%>
+
+<%	}  %>
+
+Bitte überweisen Sie <%= "#{@order.amount} €" -%> auf das folgenden Konto:
+Kontoinhaber: Julien Bergner
+Konto-Nr.: 60 12 94 14 29
+BLZ: 100 500 00 (Berliner Sparkasse)
+
+Geben Sie bitte als Verwendungszweck ihren Namen an, damit wir Ihre Zahlung zuordnen können.
+Sobald ihre Zahlung eingegangen ist, sind die Plätze für Sie reserviert.
+Je nach Wunsch werden die Karten an der Abendkasse für Sie hinterlegt oder Ihnen per Post zugesandt. In letzterem Fall benötigen wir Ihre Anschrift.
+
+Wir freuen uns auf einen vergnüglichen Ballabend.
+
+Herzliche Grüße
+Julien Bergner
+(für das Theresienball-Team)

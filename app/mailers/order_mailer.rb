@@ -12,7 +12,9 @@
 class OrderMailer < ActionMailer::Base
   default from: "theresienball@theresienschule.de"
 
-  def order_confirmation(customer)
+  def order_confirmation(customer, order)
+    @customer = customer
+    @order = order
     mail(:to => customer.email, :subject => "Buchungsbestätigung Theresienball #{Date.today.year}")
   end
 end
