@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Status:</b>
-  <%= @order.status %>
+  <b>Customer:</b>
+  <%= link_to @order.customer.full_name, @order.customer %>
 </p>
 
 <p>
   <b>Amount:</b>
-  <%= @order.amount %>
+  <%= "#{@order.amount} €" %>
 </p>
 
 <p>
@@ -16,8 +16,17 @@
 </p>
 
 <p>
-  <b>Customer:</b>
-  <%= @order.customer_id %>
+  <b>Plätze:</b><br />
+  <% @order.getSeatsPerTable.each do |table, seats| %>
+    <%= raw("&nbsp;<b>#{table.caption}:</b> #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"} ") %>
+      <i>(Nummern <%= seats.collect{|seat| seat.position}.sort!.join(", ").sub(/(.*)\, /, '\1 und ') %>)</i>
+    <br />
+  <% end %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @order.status %>
 </p>
 
 
