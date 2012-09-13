@@ -18,15 +18,14 @@
         <td>
           <ol>
             <% customer.orders.each do |order| %>
-              <%= link_to order do %>
-                <li>
-                  <% order.getSeatsPerTable.each do |table, seats| %>
-                    <%= "#{table.caption}: #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}" %>
-                    <br />
-                  <% end %>
-                  <i>(<%= order.status %>)</i>
-                </li>
-              <% end %>
+              <li>
+                <% order.getSeatsPerTable.each do |table, seats| %>
+                  <%= "#{table.caption}: #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}" %>
+                  <br />
+                <% end %>
+                <i>(<%= "#{order.amount.round(2)} €, #{order.status}" %>)</i><br />
+                <%= link_to "view", order %> |  <%= link_to "mark as payed", "#", :confirm => "Are you sure to mark this order as payed?" %>
+              </li>
             <% end %>
           </ol>
         </td>
