@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h1>Kunden</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Anrede</th>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>Straße</th>
+      <th>Nr.</th>
+      <th>PLZ</th>
+      <th>Ort</th>
+      <th>E-Mail</th>
+      <th>Kinder in Klasse</th>
+      <th>Angelegt am</th>
+      <th>Aktionen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.id, customer_path(customer) %></td>
+        <td><%= customer.designation == "female" ? "Frau" : "Herr" %></td>
+        <td><%= customer.first_name %></td>
+        <td><%= customer.last_name %></td>
+        <td><%= customer.street_name %></td>
+        <td><%= customer.street_number %></td>
+        <td><%= customer.zip_code %></td>
+        <td><%= customer.city %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.childrens_class %></td>
+        <td><%= customer.created_at.in_time_zone("Berlin").to_s(:european_style) %></td>
+        <td>
+          <%= link_to "Anzeigen", customer_path(customer), :class => 'btn btn-mini' %>
+          <%= link_to "Bearbeiten",
+                      edit_customer_path(customer), :class => 'btn btn-mini' %>
+          <%= link_to "Löschen",
+                      customer_path(customer), method: :delete, data: { confirm: 'Sind Sie sicher?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Neuer Kunde", new_customer_path,
+            :class => 'btn btn-primary' %>

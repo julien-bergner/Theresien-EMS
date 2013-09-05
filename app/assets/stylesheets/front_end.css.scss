@@ -1,0 +1,362 @@
+// Place all the styles related to the FrontEnd controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$picture-width: 30px;
+$picture-height: 30px;
+$space-width: 1px;
+$space-height: 1px;
+$caption-width: 90px;
+$caption-height: 40px;
+$caption-space-width: 10px;
+$caption-space-height: 20px;
+$start-width: 0px;
+$start-height: -25px;
+
+@mixin size($width: 28px, $height: 28px) {
+  width: $width;
+  height: $height;
+}
+
+#stage {
+  position: absolute;
+  left: 120px;
+  top: 10px;
+}
+
+#buffet {
+  position: absolute;
+  left: 10px;
+  top: 100px;
+}
+
+#bar {
+  position: absolute;
+  left: 10px;
+  top: 300px;
+}
+
+//Stuff
+#selection-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 900px;
+  min-height: 120px;
+
+
+
+}
+
+//Booking-Canvas
+
+#booking-canvas {
+  position: relative;
+  background-color: #ffffff;
+  width: 900px;
+  height: 940px;
+  border-color: #000000;
+  border-style: solid;
+  border-width: 2px;
+}
+//Position of Tables
+
+#table-0 {
+  position:absolute;
+  left: 200px; top: 80px;
+
+}
+
+  @for $k from 5 through 15 {
+      $adjustment-factor: ($k - 5);
+      #table-#{$k} {
+          position:absolute;
+          left: 913px - 90px * $adjustment-factor; top: 700px;
+      }
+
+  }
+
+  @for $k from 1 through 9 {
+      $adjustment-factor: ($k - 1);
+      @if $k > 5 { $k: $k + 10 }
+      #table-#{$k} {
+          position:absolute;
+          top: 75px * $adjustment-factor + 90px; left:600px;
+      }
+
+  }
+
+//Horizontal Tables
+
+//Caption
+.caption-container-table-horizontal {
+  position: absolute;
+  top: (0.5*($picture-width + $space-width)); left: $start-width;
+  width: $caption-width;
+  height: $caption-height;
+
+}
+
+.caption-text-table-horizontal {
+  text-align: right;
+
+}
+
+//Seat 1
+div.seat-1-horizontal
+{
+  position:absolute;
+  top: (0.5*($picture-width + $space-width)); left:$start-width + $caption-width + $caption-space-width;
+  @include size();
+}
+
+//Seats 2-5 in the upper row
+  @for $i from 2 through 5 {
+    $adjustment-factor: ($i - 1);
+    div.seat-#{$i}-horizontal {
+      position:absolute;
+      top:0px; left:$start-width + $caption-width + $caption-space-width + $adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+
+//Seats 6-9 in the lower row
+  @for $j from 6 through 9 {
+    $adjustment-factor: ($j - 5);
+    div.seat-#{$j}-horizontal {
+      position:absolute;
+      top:($picture-width + $space-width); left:$start-width + $caption-width + $caption-space-width + $adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+
+//Seat 10
+div.seat-10-horizontal
+{
+  position:absolute;
+  top:(0.5*($picture-width + $space-width)); left:$start-width + $caption-width + $caption-space-width + (5*($picture-width + $space-width));
+  @include size();
+}
+
+//Vertical Tables
+
+//Caption
+.caption-container-table-vertical {
+  position: absolute;
+  top: 0px; left: 0px;
+  height: $picture-height + $space-height;
+  width: $caption-width;
+
+}
+
+.caption-container-teacher-table-vertical {
+  position: absolute;
+  top: -27px; left: 0px;
+  height: $picture-height*2 + $space-height;
+  width: $caption-width;
+
+}
+
+.caption-container-teacher-table-horizontal {
+  position: absolute;
+  top: 15px; left: -80px;
+  height: $picture-height + $space-height;
+  width: $caption-width*2;
+
+}
+
+.caption-text-table-vertical {
+  text-align: left;
+
+}
+
+.caption-text-teacher-table-vertical {
+  text-align: left;
+
+}
+
+.caption-text-teacher-table-horizontal {
+  text-align: left;
+
+}
+
+//Seat 1
+div.seat-1-vertical
+{
+  position:absolute;
+  left: (0.5*($picture-height + $space-height)); top:$start-height + $caption-height + $caption-space-height;
+  @include size();
+}
+
+//Seats 2-5 in the upper row
+  @for $i from 2 through 5 {
+    $adjustment-factor: ($i - 1);
+    div.seat-#{$i}-vertical {
+      position:absolute;
+      left:0px; top:$start-height + $caption-height + $caption-space-height + $adjustment-factor*($picture-height + $space-height);
+      @include size();
+    }
+  }
+
+//Seats 6-9 in the lower row
+  @for $j from 6 through 9 {
+    $adjustment-factor: ($j - 5);
+    div.seat-#{$j}-vertical {
+      position:absolute;
+      left:($picture-height + $space-height); top:$start-height + $caption-height + $caption-space-height + $adjustment-factor*($picture-height + $space-height);
+      @include size();
+    }
+  }
+
+//Seat 10
+div.seat-10-vertical
+{
+  position:absolute;
+  left:(0.5*($picture-height + $space-height)); top:$start-height + $caption-height + $caption-space-height + (5*($picture-height + $space-height));
+  @include size();
+}
+
+
+//Promenade Tickets
+
+//Caption
+.caption-container-table-promenade {
+  position: absolute;
+  top: 30px; left: 20px;
+  height: $picture-height + $space-height;
+  width: $caption-width;
+
+}
+
+.caption-text-table-promenade {
+  text-align: center;
+
+}
+
+  @for $i from 1 through 5 {
+    $adjustment-factor: ($i - 1);
+    div.seat-#{$i}-promenade {
+      position:absolute;
+      top:0px; left: $adjustment-factor*($picture-width + $space-width);
+      @include size();
+    }
+  }
+
+
+#next-button {
+  margin-bottom: 20px;
+}
+
+
+#selection-view-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 480px;
+}
+
+#customer-view-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+}
+
+#customer-form-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+}
+
+#change-seat-button-div {
+  text-align: right;
+}
+
+#change-seats-button {
+  margin-right: 50px;
+}
+
+#edit-customer-button-div {
+  text-align: right;
+}
+
+#edit-customer-button {
+  margin-right: 50px;
+}
+
+.input-street-number {
+  width: 30px;
+}
+
+.input-street-name {
+  width: 105px;
+}
+
+.input-zip {
+  width: 40px;
+}
+
+.input-city {
+  width: 95px;
+}
+
+form .clearfix:before, form .clearfix:after {
+  display: inline;
+}
+
+.customer-view-element {
+  font-size: 15px;
+}
+
+#summary-button-div {
+  text-align: right;
+  margin-right: 20px;
+}
+
+#edit-customer-button {
+  margin-right: 20px;
+}
+
+#payment-buttom-button-div {
+  text-align: right;
+  margin-right: 45px;
+}
+
+#payment-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 400px;
+}
+
+#bank-transfer-button {
+  width: 210px;
+}
+
+#summary-cancel-button {
+  vertical-align: bottom;
+}
+
+#index-text {
+  position:relative;
+  top:0px;
+  left:30px;
+  text-align: center;
+  width: 600px;
+
+}
+
+#dancers-container {
+  float: left;
+}
+
+#logo-container {
+  position:relative;
+  left: 150px;
+}
+
+
+
+
+
+

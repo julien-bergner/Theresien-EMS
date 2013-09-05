@@ -1,0 +1,61 @@
+<%= form_for @customer, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :designation, "Anrede", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:designation, options_for_select([["Frau", "female"],["Herr", "male"]], :selected => @customer.designation)) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :first_name, "Vorname", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_name, "Nachname", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :street_name, "Straße", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :street_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :street_number, "Nr.", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :street_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :zip_code, "PLZ", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :zip_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :city, "Ort", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, "E-Mail", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :childrens_class, "Kinder in Klasse", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :childrens_class, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "Zurück", customers_path, :class => 'btn' %>
+  </div>
+<% end %>

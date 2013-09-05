@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1>Kunde <%= @customer.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Anrede:</strong></dt>
+  <dd><%= @customer.designation == "female" ? "Frau" : "Herr" %></dd>
+  <dt><strong>Vorname:</strong></dt>
+  <dd><%= @customer.first_name %></dd>
+  <dt><strong>Nachname:</strong></dt>
+  <dd><%= @customer.last_name %></dd>
+  <dt><strong>Straße:</strong></dt>
+  <dd><%= @customer.street_name %></dd>
+  <dt><strong>Nr.:</strong></dt>
+  <dd><%= @customer.street_number %></dd>
+  <dt><strong>PLZ:</strong></dt>
+  <dd><%= @customer.zip_code %></dd>
+  <dt><strong>Ort:</strong></dt>
+  <dd><%= @customer.city %></dd>
+  <dt><strong>E-Mail:</strong></dt>
+  <dd><%= @customer.email %></dd>
+  <dt><strong>Kinder in Klasse:</strong></dt>
+  <dd><%= @customer.childrens_class %></dd>
+  <dt><strong>Angelegt am:</strong></dt>
+  <dd><%= @customer.created_at.in_time_zone("Berlin").to_s(:european_style) %></dd>
+
+</dl>
+
+<div class="form-actions">
+  <%= link_to "Zurück",
+              customers_path, :class => 'btn'  %>
+  <%= link_to "Bearbeiten",
+              edit_customer_path(@customer), :class => 'btn' %>
+  <%= link_to "Löschen",
+              customer_path(@customer), method: :delete, data: { confirm: 'Sind Sie sicher?' },
+              :class => 'btn btn-danger' %>
+</div>

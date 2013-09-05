@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>Zusammenfassung</h1>
+</div>
+
+<%= render :partial => 'selectionViewer' %>
+
+<div id="customer-view-container">
+  <h3>Ihre Angaben:</h3>
+  <br>
+<dl class="dl-horizontal">
+  <% unless @customer.designation.nil? %>
+  <dt class="customer-view-element">Anrede:</dt>
+  <dd class="customer-view-element">
+    <% if @customer.designation == "male" %>
+    Herr
+    <% else if @customer .designation == "female" %>
+    Frau
+    <% end %>
+    <% end %>
+  </dd>
+  <br>
+  <% end	  %>
+  <dt class="customer-view-element">Vorname:</dt>
+  <dd class="customer-view-element"><%= @customer.first_name %></dd>
+  <br>
+  <dt class="customer-view-element">Nachname:</dt>
+  <dd class="customer-view-element"><%= @customer.last_name %></dd>
+  <br>
+  <dt class="customer-view-element">E-Mail-Adresse:</dt>
+  <dd class="customer-view-element"><%= @customer.email %></dd>
+
+  <% if @customer.childrens_class != '' %>
+  <br>
+  <dt class="customer-view-element">Kinder in Klasse:</dt>
+  <dd class="customer-view-element"><%= @customer.childrens_class %></dd>
+  <% end	  %>
+</dl>
+
+<div id=edit-customer-button-div>
+    <%= link_to("Ändern", :editCustomer, {:class => "btn", :id => "edit-customer-button"}) %>
+</div>
+
+<hr>
+
+<div id=summary-button-div>
+
+  <%= link_to "Abbrechen", :cancel, {:class => "btn", :id => "summary-cancel-button"} %>
+
+  <%= link_to "Bezahlen", :payment, {:class => "btn btn-large btn-inverse btn-custom", :id => "summary-next-button"} %>
+
+
+
+  </div>
+</div>

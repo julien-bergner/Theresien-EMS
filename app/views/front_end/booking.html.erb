@@ -1,0 +1,66 @@
+<div class="page-header">
+  <h1>Karten bestellen</h1>
+</div>
+
+
+<%= javascript_tag do %>
+   tableLists = <%= @numberOfSeatsPerTableArray.to_s %>;
+  <% unless @selectedSeatsIds.nil? %>
+    selectedSeatsArray = <%= @selectedSeatsIds.to_s %>
+  <% else %>
+    selectedSeatsArray = new Array();
+  <% end %>
+<% end %>
+
+
+<div id="selection-container">
+
+  <h3>Bitte w&auml;hlen Sie die Pl&auml;tze aus, die Sie bestellen m&ouml;chten:</h3>
+  <br/>
+  <h3 id="textoutput"></h3>
+  <br/>
+
+
+
+</div>
+
+<%= form_tag :receiveSelectedSeats, :method => "put" %>
+<%= hidden_field_tag :selectedSeatsList, "" %>
+
+<%= submit_tag("Weiter", :class => "btn btn-large btn-inverse", :id => "next-button", :disabled => true)  %>
+
+<div id=booking-canvas>
+
+  <%  @table_and_seat_data.each do |table,seats| %>
+
+      <div id=table-<%= table.position %>>
+
+        <% if table.position.to_s == "0"  %>
+            <div class=caption-container-table-<%= table.orientation %>><h3 class=caption-text-table-<%= table.orientation %>>Flanierkarten</h3></div>
+            <% count = 1 %>
+            <% seats.each do |seat| %>
+
+                    <% name = getStatusString(seat) + '?' + table.position.to_s	  %>
+                    <div class=seat-<%= count %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag(getIconPath(seat), :id => seat.id, :class => 'seat', :name => name)%></div>
+                    <% count += 1 %>
+            <% end  %>
+        <% else %>
+            <div class=<%= (table.position.to_s == "16" or table.position.to_s == "17") ? "caption-container-teacher-table-" : "caption-container-table-" %><%= table.orientation %>><h3 class=<%= (table.position.to_s == "16" or table.position.to_s == "17") ? "caption-text-teacher-table-" : "caption-text-table-" %><%= table.orientation %>><%= table.caption %></h3></div>
+            <% seats.each do |seat| %>
+
+                <% name = getStatusString(seat) + '?' + table.position.to_s	  %>
+                <div class=seat-<%= seat.position %>-<%= table.orientation %> id=seat-<%= seat.id %> ><%= image_tag(getIconPath(seat), :id => seat.id, :class => 'seat', :name => name)%></div>
+            <% end %>
+        <% end %>
+
+      </div>
+
+  <% end  %>
+
+
+  <div id="bar"><%= image_tag("bar.png")%></div>
+  <div id="stage"><%= image_tag("stage.png")%></div>
+  <div id="buffet"><%= image_tag("buffet.png")%></div>
+
+</div>
+

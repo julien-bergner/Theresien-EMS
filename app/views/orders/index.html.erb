@@ -1,0 +1,39 @@
+
+<div class="page-header">
+  <h1>Bestellungen</h1>
+</div>
+<%= select_tag_for_filter_with_model("orders", @filters, params) %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Gesamtbetrag</th>
+      <th>Zustellungsart</th>
+      <th>Kunde</th>
+      <th>Angelegt am</th>
+      <th>Aktionen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, order_path(order) %></td>
+        <td><%= order.status %></td>
+        <td><%= order.amount %></td>
+        <td><%= order.delivery_method %></td>
+        <td><%= unless order.customer.nil? then link_to order.customer.full_name, order.customer else order.customer_id end %></td>
+        <td><%= order.created_at.in_time_zone("Berlin").to_s(:european_style) %></td>
+        <td>
+          <%= link_to "Anzeigen", order_path(order), :class => 'btn btn-mini' %>
+          <%= link_to "Bearbeiten", edit_order_path(order), :class => 'btn btn-mini' %>
+          <%= link_to "Löschen", order_path(order), method: :delete, data: { confirm: 'Sind Sie sicher?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Neue Bestellung", new_order_path, :class => 'btn btn-primary' %>
+

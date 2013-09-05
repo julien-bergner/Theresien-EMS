@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <% unless notice.nil? %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% unless alert.nil? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
+
+
+  <!-- Javascripts
+ ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <%= javascript_tag do %>
+      var tableLists;
+      var selectedSeatsArray;
+  <% end %>
+
+  <%= javascript_include_tag "application" %>
+
+  </body>
+</html>
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Theresienball</title>
+
+</head>
+<body style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
+<table width="500px" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= image_tag attachments['logo.png'].url, :alt => 'Theresienball 2012' %></td>
+  </tr>
+  <tr>
+    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
+      <p style="margin: 8px 0;">Sehr <%= if @customer.designation == "female" then
+                                           "geehrte Frau #{@customer.last_name}";
+                                         else
+                                           "geehrter Herr #{@customer.last_name}"
+                                         end %>,</p>
+
+      <p style="margin: 8px 0;">wir haben Ihre Zahlung von <%= "#{number_to_currency(@order.amount, :unit => "", :separator => ",", :delimiter => "")} €" -%> erhalten.</p>
+      Damit sind folgende Karten für Sie reserviert:
+      <table id="background" border="0" cellpadding="0" cellspacing="0">
+        <% @order.getSeatsPerTable.each { |table, seats| %>
+            <tr>
+              <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= seats.length -%></td>
+              <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">&#160;</td>
+              <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= if seats.length > 1 then
+                                                                                                       " #{table.seat_description}n";
+                                                                                                     else
+                                                                                                       " #{table.seat_description}"
+                                                                                                     end -%></td>
+              <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">&#160;</td>
+              <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= if table.orientation != "promenade" then
+                                                                                                       " an #{table.caption}"
+                                                                                                     end -%></td>
+
+            </tr>
+        <% } %>
+      </table>
+      <p style="margin: 8px 0;">
+        <%= if @order.delivery_method == "Hinterlegung" then
+              "Die Karten werden an der Abendkasse für Sie hinterlegt."
+            end -%>
+        <%= if @order.delivery_method == "Email" then
+              "Die Karten werden Ihnen bis Mitte Oktober per E-Mail zugesandt."
+            end -%>
+      </p>
+
+      <p style="margin: 8px 0;">Wir freuen uns auf einen vergnüglichen Ballabend.</p>
+
+      <p style="margin: 8px 0;">
+        Herzliche Grüße <br>
+        Julien Bergner <br>
+        (für das Theresienball-Team)
+      </p>
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

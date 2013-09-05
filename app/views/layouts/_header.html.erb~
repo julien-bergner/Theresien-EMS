@@ -1,0 +1,34 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">Theresienball 2012</a>
+      <div class="container nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Karten bestellen", :booking %></li>
+          <!--<li> #link_to "Impressionen", :photos  %></li>-->
+          <!--<li> #link_to "Sponsoren", :sponsors  %></li>-->
+          <li><%= link_to "Kontakt", :contact  %></li>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to "Übersicht", :overview %>
+            </li>
+            <li>
+              <%= link_to "Kunden", :customers %>
+            </li>
+            <li>
+                <%= link_to "Bestellungen", :orders %>
+            </li>
+            <li>
+              <%= link_to "Abmelden", destroy_admin_session_path, :method => :delete %>
+            </li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

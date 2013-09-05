@@ -1,0 +1,285 @@
+/* line 23, ../../app/assets/stylesheets/home.css.scss */
+#booking-canvas {
+  position: absolute;
+  background-color: #dcdcdc;
+  width: 600px;
+  height: 800px;
+}
+
+/* line 32, ../../app/assets/stylesheets/home.css.scss */
+#table-1 {
+  position: absolute;
+  left: 240px;
+  top: 0px;
+}
+
+/* line 32, ../../app/assets/stylesheets/home.css.scss */
+#table-2 {
+  position: absolute;
+  left: 330px;
+  top: 0px;
+}
+
+/* line 32, ../../app/assets/stylesheets/home.css.scss */
+#table-3 {
+  position: absolute;
+  left: 420px;
+  top: 0px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-4 {
+  position: absolute;
+  top: 250px;
+  left: 270px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-5 {
+  position: absolute;
+  top: 340px;
+  left: 270px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-6 {
+  position: absolute;
+  top: 430px;
+  left: 270px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-7 {
+  position: absolute;
+  top: 520px;
+  left: 270px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-8 {
+  position: absolute;
+  top: 610px;
+  left: 270px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-9 {
+  position: absolute;
+  top: 700px;
+  left: 270px;
+}
+
+/* line 41, ../../app/assets/stylesheets/home.css.scss */
+#table-10 {
+  position: absolute;
+  top: 790px;
+  left: 270px;
+}
+
+/* line 51, ../../app/assets/stylesheets/home.css.scss */
+.caption-container-table-horizontal {
+  position: absolute;
+  top: 15.5px;
+  left: 0px;
+  width: 80px;
+  height: 40px;
+}
+
+/* line 59, ../../app/assets/stylesheets/home.css.scss */
+.caption-text-table-horizontal {
+  text-align: right;
+}
+
+/* line 66, ../../app/assets/stylesheets/home.css.scss */
+div.seat-1-horizontal {
+  position: absolute;
+  top: 15.5px;
+  left: 90px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 75, ../../app/assets/stylesheets/home.css.scss */
+div.seat-2-horizontal {
+  position: absolute;
+  top: 0px;
+  left: 121px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 75, ../../app/assets/stylesheets/home.css.scss */
+div.seat-3-horizontal {
+  position: absolute;
+  top: 0px;
+  left: 152px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 75, ../../app/assets/stylesheets/home.css.scss */
+div.seat-4-horizontal {
+  position: absolute;
+  top: 0px;
+  left: 183px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 75, ../../app/assets/stylesheets/home.css.scss */
+div.seat-5-horizontal {
+  position: absolute;
+  top: 0px;
+  left: 214px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 85, ../../app/assets/stylesheets/home.css.scss */
+div.seat-6-horizontal {
+  position: absolute;
+  top: 31px;
+  left: 121px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 85, ../../app/assets/stylesheets/home.css.scss */
+div.seat-7-horizontal {
+  position: absolute;
+  top: 31px;
+  left: 152px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 85, ../../app/assets/stylesheets/home.css.scss */
+div.seat-8-horizontal {
+  position: absolute;
+  top: 31px;
+  left: 183px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 85, ../../app/assets/stylesheets/home.css.scss */
+div.seat-9-horizontal {
+  position: absolute;
+  top: 31px;
+  left: 214px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 94, ../../app/assets/stylesheets/home.css.scss */
+div.seat-10-horizontal {
+  position: absolute;
+  top: 15.5px;
+  left: 245px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 103, ../../app/assets/stylesheets/home.css.scss */
+.caption-container-table-vertical {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 31px;
+  width: 80px;
+}
+
+/* line 111, ../../app/assets/stylesheets/home.css.scss */
+.caption-text-table-vertical {
+  text-align: left;
+}
+
+/* line 118, ../../app/assets/stylesheets/home.css.scss */
+div.seat-1-vertical {
+  position: absolute;
+  left: 15.5px;
+  top: 35px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 127, ../../app/assets/stylesheets/home.css.scss */
+div.seat-2-vertical {
+  position: absolute;
+  left: 0px;
+  top: 66px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 127, ../../app/assets/stylesheets/home.css.scss */
+div.seat-3-vertical {
+  position: absolute;
+  left: 0px;
+  top: 97px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 127, ../../app/assets/stylesheets/home.css.scss */
+div.seat-4-vertical {
+  position: absolute;
+  left: 0px;
+  top: 128px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 127, ../../app/assets/stylesheets/home.css.scss */
+div.seat-5-vertical {
+  position: absolute;
+  left: 0px;
+  top: 159px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 137, ../../app/assets/stylesheets/home.css.scss */
+div.seat-6-vertical {
+  position: absolute;
+  left: 31px;
+  top: 66px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 137, ../../app/assets/stylesheets/home.css.scss */
+div.seat-7-vertical {
+  position: absolute;
+  left: 31px;
+  top: 97px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 137, ../../app/assets/stylesheets/home.css.scss */
+div.seat-8-vertical {
+  position: absolute;
+  left: 31px;
+  top: 128px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 137, ../../app/assets/stylesheets/home.css.scss */
+div.seat-9-vertical {
+  position: absolute;
+  left: 31px;
+  top: 159px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 146, ../../app/assets/stylesheets/home.css.scss */
+div.seat-10-vertical {
+  position: absolute;
+  left: 15.5px;
+  top: 190px;
+  width: 28px;
+  height: 28px;
+}

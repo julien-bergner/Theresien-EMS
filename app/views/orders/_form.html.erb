@@ -1,0 +1,33 @@
+<%= form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:status, options_for_select(["CREATED", "IN-PROGRESS", "ORDER_CONFIRMATION_SEND", "PAID", "RECEIPT_OF_PAYMENT_SEND", "TICKETS_SEND", "COMPLETED"], :selected => @order.status)) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :amount, "Gesamtbetrag", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :amount, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :delivery_method, "Zustellungsart", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :delivery_method, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :customer_id, "Kunde", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :customer_id, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "Zurück", orders_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+

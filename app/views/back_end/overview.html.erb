@@ -1,0 +1,67 @@
+<h1>Übersicht</h1>
+<br/>
+
+<%= select_tag_for_filter_without_model(":overview", @filters, params) %>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>E-Mail</th>
+    <th>Kinder in<br/>Klasse</th>
+    <th>Bestellungen</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% params[:show].nil? ? filter_param = "all" : filter_param = params[:show] %>
+
+  <% @customers.each do |customer| %>
+      <% orders = customer.orders.send(filter_param) %>
+      <%  if orders.count == 0 then next end %>
+      <tr>
+        <td><%= link_to "#{(customer.designation == "female") ? "Frau" : "Herr"} #{customer.full_name}", customer, :name => "customer_" + customer.id.to_s %></td>
+        <td><%= mail_to customer.email %></td>
+        <td><%= customer.childrens_class %></td>
+        <td>
+          <table class="table table-bordered">
+
+            <% orders.each do |order| %>
+                <tr <%= if order.statusIsMoreProceeded?("COMPLETED") then 'style="background-color:#00FF7F;"'.html_safe else 'style="background-color:#FFFFE0;"'.html_safe end %> >
+
+                  <td>
+                    <% order.getSeatsPerTable.each do |table, seats| %>
+                        <%= "#{table.caption != "" ? table.caption : table.seat_description }: #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}" %>
+                        <br />
+                    <% end %>
+                    <i>(<%= "#{number_to_currency(order.amount, :unit => "")} €, #{order.statusIsMoreProceeded?("PAID") ? "BEZAHLT" : "UNBEZAHLT";}" %>)</i><br />
+                    <%= order.statusIsMoreProceeded?("COMPLETED") ? "Status: ABGESCHLOSSEN" : "Status: OFFEN"; %><br/>
+                    <%= link_to "Anzeigen", order %>
+
+
+                  </td>
+                  <td>
+                    <p><b>Ereignisse:</b></p>
+                    <ul>
+                      <%= if order.statusIsMoreProceeded?("CREATED") then "<li>Bestellung wurde angelegt am #{order.created_at.in_time_zone("Berlin").to_s(:european_style)}</li>".html_safe end %>
+                      <%= if order.statusIsMoreProceeded?("IN-PROGRESS") then "<li>Bestellung wurde aktiv</li>".html_safe end %>
+                      <%= if order.statusIsNext?("ORDER_CONFIRMATION_SEND") then "#{link_to('E-Mail: "Bestellbestätigung" verschicken', sendOrderConfirmation_order_path(order.id), :method => :put)} oder <br/> #{link_to("Bestellbestätigung überspringen, d.h. nicht verschicken", skipOrderConfirmation_order_path(order.id), :method => :put)}".html_safe else order.statusIsMoreProceeded?("ORDER_CONFIRMATION_SEND") ? "<li>Bestellbestätigung wurde versandt</li>".html_safe : ""; end  %>
+                      <%= if order.statusIsNext?("PAID") then link_to("Bestellung als bezahlt markieren", markAsPaid_order_path(order.id), :method => :put) else order.statusIsMoreProceeded?("PAID") ? "<li>Bestellung wurde als bezahlt markiert</li>".html_safe : ""; end  %>
+                      <%= if order.statusIsNext?("RECEIPT_OF_PAYMENT_SEND") then link_to('E-Mail: "Benachrichtigung über Zahlungseingang" verschicken', sendReceiptOfPayment_order_path(order.id), :method => :put) else order.statusIsMoreProceeded?("RECEIPT_OF_PAYMENT_SEND") ? "<li>Benachrichtigung über Zahlungseingang wurde verschickt</li>".html_safe : ""; end  %>
+                      <%= if order.statusIsNext?("TICKETS_SEND") then link_to('E-Mail mit Online-Tickets verschicken', sendTickets_order_path(order.id), :method => :put) else order.statusIsMoreProceeded?("TICKETS_SEND") ? "<li>Online-Tickets wurden verschickt</li>".html_safe : ""; end  %>
+                      <%= if order.statusIsMoreProceeded?("COMPLETED") then "<li>Bestellung wurde abgeschlossen</li>".html_safe end %>
+                    </ul>
+
+                  </td>
+                </tr>
+            <% end %>
+
+          </table>
+        </td>
+
+        <td><%= link_to 'Löschen', customer, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+

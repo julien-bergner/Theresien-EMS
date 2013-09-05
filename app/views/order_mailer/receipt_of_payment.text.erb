@@ -1,0 +1,20 @@
+Sehr <%= if @customer.designation == "female" then "geehrte Frau #{@customer.last_name}"; else "geehrter Herr #{@customer.last_name}" end  %>,
+
+wir haben Ihre Zahlung von <%= "#{number_to_currency(@order.amount, :unit => "", :separator => ",", :delimiter => "")} €" -%> erhalten.
+
+Damit sind folgende Karten für Sie reserviert:
+<% @order.getSeatsPerTable.each { |table, seats|  %>
+    <%= seats.length -%>
+    <%= if seats.length > 1 then " #{table.seat_description}n"; else " #{table.seat_description}" end -%>
+    <%= if table.orientation != "promenade" then " an #{table.caption}" end -%>
+
+<%	}  %>
+
+<%= if @order.delivery_method == "Hinterlegung" then "Die Karten werden an der Abendkasse für Sie hinterlegt." end -%>
+<%= if @order.delivery_method == "Email" then "Die Karten werden Ihnen bis Mitte Oktober per E-Mail zugesandt." end -%>
+
+Wir freuen uns auf einen vergnüglichen Ballabend.
+
+Herzliche Grüße
+Julien Bergner
+(für das Theresienball-Team)

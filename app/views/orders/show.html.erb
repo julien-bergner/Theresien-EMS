@@ -1,0 +1,39 @@
+
+<div class="page-header">
+  <h1>Bestellung <%= @order.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Kunde:</strong></dt>
+  <dd><%= unless @order.customer.nil? then link_to @order.customer.full_name, @order.customer else @order.customer_id end %></dd>
+
+  <dt><strong>Status:</strong></dt>
+  <dd><%= @order.status %></dd>
+
+  <dt><strong>Gesamtbetrag:</strong></dt>
+  <dd><%= "#{number_to_currency(@order.amount, :unit => "")} €" %></dd>
+
+  <dt><strong>Zustellungsart:</strong></dt>
+  <dd><%= @order.delivery_method %></dd>
+
+  <dt><strong>Erstellungsdatum:</strong></dt>
+  <dd><%= @order.created_at.in_time_zone("Berlin").to_s(:european_style) %></dd>
+
+</dl>
+<p>
+  <b>Bestellte Karten:</b><br />
+  <% @order.getSeatsPerTable.each do |table, seats| %>
+      <%= raw("&nbsp;<b>#{table.caption != "" ? table.caption : table.seat_description}:</b> #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"} ") %>
+      <i>(Nummern <%= seats.collect{|seat| seat.position}.sort!.join(", ").sub(/(.*)\, /, '\1 und ') %>)</i>
+      <br />
+  <% end %>
+</p>
+
+<%=  link_to("PDF mit Karten generieren", sendTicketPDFToBrowser_order_path(@order.id), :method => :put, :class => "btn") %>
+
+<div class="form-actions">
+  <%= link_to "Zurück", orders_path, :class => 'btn'  %>
+  <%= link_to "Bearbeiten", edit_order_path(@order), :class => 'btn' %>
+  <%= link_to "Löschen", order_path(@order), method: :delete, data: { confirm: 'Sind Sie sicher?' },
+              :class => 'btn btn-danger' %>
+</div>

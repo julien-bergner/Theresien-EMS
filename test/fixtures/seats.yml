@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  prom_table_id: 1
+  caption: MyString
+  status: 1
+
+two:
+  prom_table_id: 1
+  caption: MyString
+  status: 1

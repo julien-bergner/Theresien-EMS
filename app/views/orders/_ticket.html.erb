@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <style type="text/css">
+      @page { margin: 20px; }
+
+      p.prom-date {
+          font-family: tahoma, sans-serif;
+          font-weight: bold;
+          font-size: 18px;
+          text-align: right;
+          width: 400px;
+      }
+
+      p.ticket-text {
+          font-family: tahoma, sans-serif;
+          font-size: 18px;
+          text-align: right;
+          width: 400px;
+      }
+
+      p.token-text {
+          font-family: monospace;
+          font-size: 8px;
+          text-align: left;
+          width: 200px;
+      }
+
+
+  </style>
+</head>
+<body>
+
+<p style="text-align: center;">Theresienball <%= Date.today.year -%> <br/>
+Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.email})"  %></p>
+
+<% order.getSeatsPerTable.each_pair do |promTable, seats| %>
+
+    <% seats.each do |seat| %>
+        <div style="position: relative; height: 280px;">
+          <div>
+            <%= image_tag(TheresienEms::Application.config.ticket_dummy_png_path, :size => "767x274") %>
+          </div>
+          <div style="position: absolute; left: 330px; top: 130px;">
+            <p class="prom-date">20. Oktober 2012</p>
+          </div>
+          <div style="position: absolute; left: 330px; top: 160px;">
+            <p class="ticket-text">
+              <%  if promTable.orientation == "promenade" %>
+                  <%= "<b>Flanierkarte</b> inklusive Freigetr&auml;nk <br/>(ohne Cocktails) <br>9,99 &euro;".html_safe %>
+              <% else %>
+                  <%= "<b>Platzkarte</b> inklusive Buffet <br/>an Tisch #{promTable.position} <br> #{seats.length == 10 ? "25" : "28"} &euro;".html_safe %>
+              <% end %>
+            </p>
+          </div>
+          <div style="position: absolute; left: 250px; top: 230px;">
+            <p class="token-text"><%= "#{SecureRandom.hex(8)}-C#{customer.id}-O#{order.id}-S#{seat.id}-P#{seat.position}" %></p>
+          </div>
+        </div>
+     <% end %>
+<% end %>
+
+</body>
+</html>
