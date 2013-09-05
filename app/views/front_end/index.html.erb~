@@ -1,6 +1,6 @@
 <div id class="page-header">
 <div id="logo-container">
-  <%= image_tag("logo.png") %>
+  <h1>Theresienball 2013</h1>
 </div>
 </div>
 
@@ -11,7 +11,7 @@
 <div id="index-text">
 
   <p class="lead">
-    Der diesj&auml;hrige Theresienball findet am <strong>20. Oktober</strong> um 19.00 Uhr in der Turnhalle der Theresienschule statt.
+    Der diesj&auml;hrige Theresienball findet am <strong>25. Oktober</strong> um 19.00 Uhr in der Turnhalle der Theresienschule statt.
   </p>
   <p class="lead">Musikalisch begleitet werden wir von Steve Horn und seiner Band.
     <br>F&uuml;r die eingeschworenen Nichtt&auml;nzer haben wir ein R&uuml;ckzugsgebiet vorgesehen!
