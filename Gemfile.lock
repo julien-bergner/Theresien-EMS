@@ -82,7 +82,6 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     multi_xml (0.5.1)
-    nokogiri (1.5.5)
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -143,7 +142,6 @@ DEPENDENCIES
   doc_raptor
   jquery-rails
   less-rails
-  nokogiri
   pg
   rails (= 3.2.7)
   rake

@@ -7,7 +7,7 @@ gem 'rails', '3.2.7'
 
 gem 'pg'
 gem 'less-rails'
-gem 'nokogiri'
+#gem 'nokogiri'
 
 # Authentification
 gem 'devise', '~> 2.1.2'
