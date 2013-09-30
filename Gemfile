@@ -12,6 +12,7 @@ gem 'less-rails'
 gem 'devise', '~> 2.1.2'
 gem 'uberspacify'
 gem 'mysql2'
+ruby '1.9.3'
 
 
 # Gems used only for assets and not required
