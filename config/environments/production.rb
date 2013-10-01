@@ -15,7 +15,7 @@ TheresienEms::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -67,6 +67,5 @@ TheresienEms::Application.configure do
 
   config.ticket_dummy_png_path = ENV["TICKET_DUMMY_PNG_PATH"]
 
-  config.domain = 'theresienball.herokuapp.com'
-  config.action_controller.asset_host = "theresienball.herokuapp.com"
+  config.domain = 'http://theresa.lacerta.uberspace.de/'
 end
