@@ -33,4 +33,4 @@ set :repository, 'git@github.com:julien-bergner/theresien-ems-2013.git'
 # By default, Ruby Enterprise Edition 1.8.7 is used for Uberspace. If you
 # prefer Ruby 1.9 or any other version, please refer to the RVM documentation
 # at https://rvm.io/integration/capistrano/ and set this variable.
-# set :rvm_ruby_string, 'ruby-2.0.0-p247@SesusoEmsDanceDiscounter'
+set :rvm_ruby_string, 'ruby-1.9.3-p448@TheresienEms2013'
