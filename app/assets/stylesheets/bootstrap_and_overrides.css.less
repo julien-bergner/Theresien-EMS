@@ -1,9 +1,17 @@
+body {
+    padding-top: 60px;
+}
+
+@import "twitter/bootstrap/responsive";
+
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
 @iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
+
+
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
 // Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
@@ -29,3 +37,19 @@
 //
 // Example:
 // @linkColor: #ff0000;
+
+// Remove gradient from nav bar background
+.navbar-inner {
+    background-color: #000;
+    background-image: none;
+    background-repeat: no-repeat;
+    filter: none;
+}
+
+@navbarText: @white;
+@navbarLinkColor: @white;
+@navbarLinkColorHover: @grayLight;
+@heroUnitBackground: @white;
+
+@linkColor: @white;
+@formActionsBackground: @white;
