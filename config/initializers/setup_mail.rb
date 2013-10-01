@@ -4,7 +4,7 @@ ActionMailer::Base.smtp_settings = {
   :domain               => "theresienschule.de",
   :user_name            => "theresienball@theresienschule.de",
   # Set password as an environment variable
-  :password             => ENV["THERESIENBALL_MAIL_PASS"],
+  :password             => Figaro.env.theresienball_mail_pass,
   :authentication       => "plain",
   :enable_starttls_auto => true
 }

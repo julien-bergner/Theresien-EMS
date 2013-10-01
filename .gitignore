@@ -29,3 +29,6 @@ pickle-email-*.html
 /config/database.yml*
 .idea/
 *.un~
+
+# Ignore application configuration
+/config/application.yml

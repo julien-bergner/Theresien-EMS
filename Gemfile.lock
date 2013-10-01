@@ -57,6 +57,9 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     highline (1.6.19)
     hike (1.2.1)
     httparty (0.9.0)
@@ -164,6 +167,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise (~> 2.1.2)
   doc_raptor
+  figaro
   jquery-rails
   less-rails
   mysql2

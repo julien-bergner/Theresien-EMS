@@ -31,6 +31,7 @@ end
 
 gem 'jquery-rails'
 gem "doc_raptor"
+gem 'figaro'
 
 
 # To use ActiveModel has_secure_password
