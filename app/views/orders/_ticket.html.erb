@@ -39,7 +39,7 @@ Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.e
     <% seats.each do |seat| %>
         <div style="position: relative; height: 280px;">
           <div>
-            <%= image_tag(TheresienEms::Figaro.env.ticket_dummy_png_path, :size => "767x274") %>
+            <%= image_tag(Figaro.env.ticket_dummy_png_path, :size => "767x274") %>
           </div>
           <div style="position: absolute; left: 330px; top: 130px;">
             <p class="prom-date">20. Oktober 2012</p>
