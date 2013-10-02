@@ -44,8 +44,9 @@ class OrderMailer < ActionMailer::Base
     @customer = order.customer
 
     #if Rails.env.production? then isTest = false else isTest = true end
-    isTest = true
-    attachments['Theresienball-Karten.pdf'] = DocRaptor.create(:document_content => @order.getTextForPDFGeneration(), :document_type => "pdf", :name => "Order_#{@order.id}", :test => isTest).body
+    #isTest = true
+    #attachments['Theresienball-Karten.pdf'] = DocRaptor.create(:document_content => @order.getTextForPDFGeneration(), :document_type => "pdf", :name => "Order_#{@order.id}", :test => isTest).body
+    attachments['Theresienball-Karten.pdf'] = WickedPdf.new.pdf_from_string(@order.getTextForPDFGeneration())
 
     mail(:to => @customer.email, :subject => "Ihre Karten für den Theresienball #{Date.today.year}")
 
