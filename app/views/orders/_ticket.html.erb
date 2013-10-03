@@ -7,7 +7,7 @@
       p.prom-date {
           font-family: tahoma, sans-serif;
           font-weight: bold;
-          font-size: 16px;
+          font-size: 14px;
           text-align: right;
           width: 600px;
       }
@@ -41,7 +41,7 @@ Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.e
           <div>
             <%= wicked_pdf_image_tag("ticket.png", :size => "767x274") %>
           </div>
-          <div style="position: absolute; left: 230px; top: 130px;">
+          <div style="position: absolute; left: 130px; top: 130px;">
             <p class="prom-date"><%= "#{Figaro.env.termin} #{Figaro.env.zeit} #{Figaro.env.ort}"%></p>
           </div>
           <div style="position: absolute; left: 330px; top: 160px;">
