@@ -46,9 +46,9 @@ Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.e
           <div style="position: absolute; left: 340px; top: 180px;">
             <p class="ticket-text">
               <%  if promTable.orientation == "promenade" %>
-                  <%= "<b>#{seat.caption}</b> inklusive Freigetr&auml;nk - ohne Cocktails (#{number_to_currency(seat.price, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u")})".html_safe %>
+                  <%= "<b>Flanierkarte</b> inklusive Freigetr&auml;nk - ohne Cocktails (#{number_to_currency(seat.price, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u")})".html_safe %>
               <% else %>
-                  <%= "<b>#{seat.caption}</b> inklusive Buffet an Tisch #{promTable.position} (#{seats.length == 10 ? number_to_currency(promTable.price/10, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u")  : number_to_currency(seat.price, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u") })".html_safe %>
+                  <%= "<b>Platzkarte</b> inklusive Buffet an Tisch #{promTable.position} (#{seats.length == 10 ? number_to_currency(promTable.price/10, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u")  : number_to_currency(seat.price, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u") })".html_safe %>
               <% end %>
             </p>                                                                                                                                                                                                    .
           </div>
