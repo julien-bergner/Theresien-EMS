@@ -43,7 +43,7 @@ Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.e
           <div style="position: absolute; left: 140px; top: 130px;">
             <p class="prom-date"><%= "#{Figaro.env.termin} #{Figaro.env.zeit} #{Figaro.env.ort}<br/>#{Figaro.env.adresse}".html_safe %></p>
           </div>
-          <div style="position: absolute; left: 340px; top: 180px;">
+          <div style="position: absolute; left: 240px; top: 180px;">
             <p class="ticket-text">
               <%  if promTable.orientation == "promenade" %>
                   <%= "<b>Flanierkarte</b> inklusive Freigetr&auml;nk - ohne Cocktails (#{number_to_currency(seat.price, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u")})".html_safe %>
