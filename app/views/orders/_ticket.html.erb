@@ -6,7 +6,6 @@
 
       p.prom-date {
           font-family: tahoma, sans-serif;
-          font-weight: bold;
           font-size: 14px;
           text-align: right;
           width: 600px;
@@ -44,12 +43,12 @@ Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.e
           <div style="position: absolute; left: 140px; top: 130px;">
             <p class="prom-date"><%= "#{Figaro.env.termin} #{Figaro.env.zeit} #{Figaro.env.ort}<br/>#{Figaro.env.adresse}".html_safe %></p>
           </div>
-          <div style="position: absolute; left: 330px; top: 160px;">
+          <div style="position: absolute; left: 330px; top: 190px;">
             <p class="ticket-text">
               <%  if promTable.orientation == "promenade" %>
                   <%= "<b>Flanierkarte</b> inklusive Freigetr&auml;nk <br/>(ohne Cocktails) <br>9,99 &euro;".html_safe %>
               <% else %>
-                  <%= "<b>Platzkarte</b> inklusive Buffet an Tisch #{promTable.position} #{seats.length == 10 ? number_to_currency(promTable.price/10, :unit=>'&euro;')  : number_to_currency(seat.price, :unit=>'&euro;') }".html_safe %>
+                  <%= "<b>Platzkarte</b> inklusive Buffet an Tisch #{promTable.position} #{seats.length == 10 ? number_to_currency(promTable.price/10, :unit=>'')  : number_to_currency(seat.price, :unit=>'') } &euro;".html_safe %>
               <% end %>
             </p>                                                                                                                                                                                                    .
           </div>
