@@ -41,7 +41,7 @@
         <% } %>
       </table>
       <p style="margin: 8px 0;">
-        Bitte überweisen Sie <%= "#{number_to_currency(@order.amount, :unit => "", :separator => ",", :delimiter => "")} €" -%> auf das folgenden Konto: <br>
+        Bitte überweisen Sie <%= "#{number_to_currency(@order.amount, :unit => "", :separator => ",", :delimiter => "")} €" -%> auf das folgende Konto: <br>
         Kontoinhaber: Theresienball <br>
         Konto-Nr.: 10 62 19 43 02 <br>
         BLZ: 100 500 00 (Berliner Sparkasse) <br>
@@ -49,12 +49,12 @@
 
       <p style="margin: 8px 0;">
         Geben Sie bitte als Verwendungszweck Ihren Namen an, damit wir Ihre Zahlung zuordnen können. <br>
-        Sobald ihre Zahlung eingegangen ist, sind die Plätze für Sie reserviert. <br>
+        Sobald Ihre Zahlung eingegangen ist, sind die Plätze für Sie reserviert. <br>
         <%= if @order.delivery_method == "Hinterlegung" then
-              "Die Karten werden an der Abendkasse für Sie hinterlegt."
+              "Die Karten werden dann an der Abendkasse für Sie hinterlegt."
             end -%>
         <%= if @order.delivery_method == "Email" then
-              "Die Karten werden Ihnen bis Mitte Oktober per E-Mail zugesandt."
+              "Die Karten werden Ihnen dann per E-Mail zugesandt."
             end -%>
       </p>
 
