@@ -347,7 +347,7 @@ class FrontEndController < ApplicationController
     @order.skipOrderConfirmation
     reset_session
 
-    redirect_to @order.paypal_url("http://theresienball.herokuapp.com/front_end/paypalReturn")
+    redirect_to @order.paypal_url(Figaro.env.host + "/front_end/paypalReturn")
 
 
   end
