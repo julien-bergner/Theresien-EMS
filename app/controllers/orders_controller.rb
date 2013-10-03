@@ -133,9 +133,7 @@ class OrdersController < ApplicationController
 
   def sendTicketPDFToBrowser
     @order = Order.find(params[:id])
-    #if Rails.env.production? then isTest = false else isTest = true end
-    isTest = true
-    send_data(DocRaptor.create(:document_content => @order.getTextForPDFGeneration(), :document_type => "pdf", :name => "Order_#{@order.id}", :test => isTest).body,
+    send_data(WickedPdf.new.pdf_from_string(@order.getTextForPDFGeneration()),
               :filename => "Theresienballkarten-#{Date.today.year}-#{@order.customer.first_name}-#{@order.customer.last_name}.pdf", :type => "pdf"
     )
   end
