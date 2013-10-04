@@ -33,9 +33,9 @@
                         <i>(Nummern <%= seats.collect{|seat| seat.position}.sort!.join(", ").sub(/(.*)\, /, '\1 und ') %>)</i>
                         <br/>
                     <% end %>
-                    <b>Zustellungsart:</b><%= order.delivery_method %><br/>
+                    <b>Zustellungsart: </b><%= order.delivery_method == "Email" ? "E-Mail" : order.delivery_method; %><br/>
                     <i>(<%= "#{number_to_currency(order.amount, :unit => "")} €, #{order.statusIsMoreProceeded?("PAID") ? "BEZAHLT" : "UNBEZAHLT";}" %>)</i><br />
-                    <%= order.statusIsMoreProceeded?("COMPLETED") ? "Status: ABGESCHLOSSEN" : "Status: OFFEN"; %><br/>
+                    <%= order.statusIsMoreProceeded?("COMPLETED") ? "<b>Status:</b> ABGESCHLOSSEN".html_safe : "</b>Status:</b> OFFEN"; %><br/>
                     <%=  link_to("PDF mit Karten generieren", sendTicketPDFToBrowser_order_path(order.id), :method => :put) %>
                     </td>
                   <td>
