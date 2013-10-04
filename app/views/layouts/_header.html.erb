@@ -14,16 +14,11 @@
           <!--<li> #link_to "Sponsoren", :sponsors  %></li>-->
           <li><%= link_to "Kontakt", :contact  %></li>
           <% if admin_signed_in? %>
+            <li class="divider"></li>
             <li>
-              <%= link_to "Übersicht", :overview %>
+              <%= link_to "Bestellungensübersicht", :overview %>
             </li>
-            <li>
-              <%= link_to "Kunden", :customers %>
-            </li>
-            <li>
-                <%= link_to "Bestellungen", :orders %>
-            </li>
-            <li>
+                        <li>
               <%= link_to "Abmelden", destroy_admin_session_path, :method => :delete %>
             </li>
           <% end %>
