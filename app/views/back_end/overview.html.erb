@@ -29,14 +29,14 @@
 
                   <td>
                     <% order.getSeatsPerTable.each do |table, seats| %>
-                        <%= raw("&nbsp;<b>#{table.caption != "" ? table.caption : table.seat_description}:</b> #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"} ") %>
+                        <%= raw("&nbsp;<b>#{table.caption != "" ? table.caption : table.seat_description}:</b> #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}<br/>") %>
                         <i>(Nummern <%= seats.collect{|seat| seat.position}.sort!.join(", ").sub(/(.*)\, /, '\1 und ') %>)</i>
-                        <br />
+                        <br/>
                     <% end %>
-                    Zustellungsart: <%= order.delivery_method %>
+                    <b>Zustellungsart:</b><%= order.delivery_method %><br/>
                     <i>(<%= "#{number_to_currency(order.amount, :unit => "")} €, #{order.statusIsMoreProceeded?("PAID") ? "BEZAHLT" : "UNBEZAHLT";}" %>)</i><br />
                     <%= order.statusIsMoreProceeded?("COMPLETED") ? "Status: ABGESCHLOSSEN" : "Status: OFFEN"; %><br/>
-                    <%=  link_to("PDF mit Karten generieren", sendTicketPDFToBrowser_order_path(order.id), :method => :put, :class => "btn") %>
+                    <%=  link_to("PDF mit Karten generieren", sendTicketPDFToBrowser_order_path(order.id), :method => :put) %>
                     </td>
                   <td>
                     <p><b>Ereignisse:</b></p>
