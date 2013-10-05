@@ -8,7 +8,7 @@
 <body style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
 <table width="500px" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= image_tag attachments['logo.png'].url, :alt => 'Theresienball 2012' %></td>
+    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= image_tag attachments['logo.png'].url, :alt => 'Theresienball' %></td>
   </tr>
   <tr>
     <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
@@ -18,7 +18,7 @@
                                            "geehrter Herr #{@customer.last_name}"
                                          end %>,</p>
 
-      im Anhang dieser Nachricht finden Sie Ihre Karten für den Theresienball 2012:
+      im Anhang dieser Nachricht finden Sie Ihre Karten für den Theresienball:
       <table id="background" border="0" cellpadding="0" cellspacing="0">
         <% @order.getSeatsPerTable.each { |table, seats| %>
             <tr>
