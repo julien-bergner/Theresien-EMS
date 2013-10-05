@@ -18,7 +18,7 @@
       <% orders = customer.orders.send(filter_param) %>
       <%  if orders.count == 0 then next end %>
       <tr>
-        <td><%= link_to "#{(customer.designation == "female") ? "Frau" : "Herr"} #{customer.full_name}", customer, :name => "customer_" + customer.id.to_s %></td>
+        <td><%= "#{(customer.designation == "female") ? "Frau" : "Herr"} #{customer.full_name}" %></td>
         <td><%= mail_to customer.email %></td>
         <td><%= customer.childrens_class %></td>
         <td>
@@ -34,7 +34,7 @@
                         <br/>
                     <% end %>
                     <b>Zustellungsart: </b><%= order.delivery_method == "Email" ? "E-Mail" : order.delivery_method; %><br/>
-                    <b>Gesamtpreis:</b> <%= "#{number_to_currency(order.amount, :unit => "")}&nsp;€&nsp;(#{order.statusIsMoreProceeded?("PAID") ? "bezahlt".html_safe : "<i>unbezahlt</i>".html_safe ;})".html_safe %><br />
+                    <b>Gesamtpreis:</b> <%= "#{number_to_currency(order.amount, :unit => "")}&nbsp;€&nbsp;(#{order.statusIsMoreProceeded?("PAID") ? "bezahlt".html_safe : "<i>unbezahlt</i>".html_safe ;})".html_safe %><br />
                     <%= order.statusIsMoreProceeded?("COMPLETED") ? "<b>Status:</b> ABGESCHLOSSEN".html_safe : "<b>Status:</b> OFFEN".html_safe; %><br/>
                     <b>Karten: </b><%=  link_to("PDF mit Karten generieren", sendTicketPDFToBrowser_order_path(order.id), :method => :put) %>
                     </td>
@@ -57,7 +57,7 @@
           </table>
         </td>
 
-        <td><%= link_to 'Löschen', customer, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+        <!-- <td><%= link_to 'Löschen', customer, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>   -->
       </tr>
   <% end %>
 </table>
