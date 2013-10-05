@@ -92,32 +92,32 @@ class OrdersController < ApplicationController
   def markAsPaid
     @order = Order.find(params[:id])
     @order.markAsPaid
-    redirect_to customers_path(:anchor => "customer_#{@order.customer_id}")
+    redirect_to :overview
   end
 
   def sendOrderConfirmation
     @order = Order.find(params[:id])
     @order.sendOrderConfirmation
-    redirect_to customers_path(:anchor => "customer_#{@order.customer_id}")
+    redirect_to :overview
   end
 
   def skipOrderConfirmation
     @order = Order.find(params[:id])
     @order.skipOrderConfirmation
-    redirect_to customers_path(:anchor => "customer_#{@order.customer_id}")
+    redirect_to :overview
   end
 
   def sendReceiptOfPayment
     @order = Order.find(params[:id])
     @order.sendReceiptOfPayment
-    redirect_to customers_path(:anchor => "customer_#{@order.customer_id}")
+    redirect_to :overview
   end
 
   def sendTickets
     @order = Order.find(params[:id])
     @order.sendTickets
 
-    redirect_to customers_path(:anchor => "customer_#{@order.customer_id}")
+    redirect_to :overview
   end
 
   def releaseSeats(order)

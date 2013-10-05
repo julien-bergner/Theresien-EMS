@@ -29,7 +29,7 @@
 
                   <td>
                     <% order.getSeatsPerTable.each do |table, seats| %>
-                        <%= raw("&nbsp;<b>#{table.caption != "" ? table.caption : table.seat_description}:</b> #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}<br/>") %>
+                        <%= raw("<b>#{table.caption != "" ? table.caption : table.seat_description}:</b> #{seats.length} #{seats.length == 1 ? "Platz" : "Plätze"}<br/>") %>
                         <i>(Nummern <%= seats.collect{|seat| seat.position}.sort!.join(", ").sub(/(.*)\, /, '\1 und ') %>)</i>
                         <br/>
                     <% end %>
