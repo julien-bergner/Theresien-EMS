@@ -303,7 +303,7 @@ class Order < ActiveRecord::Base
     puts "Orders clean up started:"
     logger.info("Orders clean up started:")
     Order.where("created_at < ?", DateTime.current - 15.minutes)
-    .select{|o| o.order_status_id.nil?}.each{|o| o.cancel}
+    .select{|o| o.status.nil?}.each{|o| o.cancel}
     puts "Orders clean up finished."
     logger.info("Orders clean up finished.")
   end
