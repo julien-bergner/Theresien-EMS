@@ -272,5 +272,42 @@ class Order < ActiveRecord::Base
   end
 
 
+  def cancel
+
+    unless self.customer.nil? then
+      puts "Customer deleted:"
+      puts customer.inspect
+      logger.info("Customer deleted:")
+      logger.info(customer.inspect)
+      self.customer.destroy
+    end
+
+    puts "Seats restored:"
+    logger.info("Seats restored:")
+    self.seats.each { |seat|
+      puts seat.id
+      logger.info(seat.id)
+      seat.order_id = nil
+      seat.status = 0
+      seat.save
+    }
+
+    puts "Order deleted:"
+    puts self.inspect
+    logger.info("Order deleted:")
+    logger.info(self.inspect)
+    self.destroy
+  end
+
+  def self.clean_up
+    puts "Orders clean up started:"
+    logger.info("Orders clean up started:")
+    Order.where("created_at < ?", DateTime.current - 15.minutes)
+    .select{|o| o.order_status_id.nil?}.each{|o| o.cancel}
+    puts "Orders clean up finished."
+    logger.info("Orders clean up finished.")
+  end
+
+
 
 end
