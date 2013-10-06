@@ -335,7 +335,7 @@ class FrontEndController < ApplicationController
     end
 
     @order = Order.find(session[:order_id])
-    @order.status = "IN-PROGRESS"
+    @order.status = "CREATED"
     @order.save
     @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
   end
@@ -346,6 +346,8 @@ class FrontEndController < ApplicationController
       return
     end
     @order = Order.find(session[:order_id])
+    @order.status = "IN-PROGRESS"
+    @order.save
     @order.skipOrderConfirmation
     reset_session
 
@@ -365,6 +367,8 @@ class FrontEndController < ApplicationController
       return
     end
     @order = Order.find(session[:order_id])
+    @order.status = "IN-PROGRESS"
+    @order.save
 
     @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
     @order.sendOrderConfirmation
