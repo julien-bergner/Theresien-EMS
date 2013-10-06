@@ -34,7 +34,7 @@
                         <br/>
                     <% end %>
                     <b>Zustellungsart: </b><%= order.delivery_method == "Email" ? "E-Mail" : order.delivery_method; %><br/>
-                    <b>Gesamtpreis:</b> <%= "#{number_to_currency(order.amount, unit: "&euro;", separator: ",", delimiter: "", format: "%n %u")}&nbsp;(#{order.statusIsMoreProceeded?("PAID") ? "bezahlt".html_safe : "<i>unbezahlt</i>".html_safe ;})".html_safe %><br />
+                    <b>Gesamtpreis:</b> <%= "#{number_to_currency(order.amount, unit: "&euro;", separator: ",", delimiter: "", format: "%n&nbsp;%u")}&nbsp;(#{order.statusIsMoreProceeded?("PAID") ? "bezahlt".html_safe : "<i>unbezahlt</i>".html_safe ;})".html_safe %><br />
                     <%= order.statusIsMoreProceeded?("COMPLETED") ? "<b>Status:</b> ABGESCHLOSSEN".html_safe : "<b>Status:</b> OFFEN".html_safe; %><br/>
                     <b>Karten: </b><%=  link_to("PDF mit Karten generieren", sendTicketPDFToBrowser_order_path(order.id), :method => :put) %>
                     </td>
