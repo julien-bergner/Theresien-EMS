@@ -123,7 +123,7 @@ class FrontEndController < ApplicationController
 
     @order = Order.find_by_id(session[:order_id])
     @order.customer = @customer
-    t
+
     unless params[:order].nil?
       @order.delivery_method = params[:order][:delivery_method]
     end
@@ -336,6 +336,7 @@ class FrontEndController < ApplicationController
 
     @order = Order.find(session[:order_id])
     @order.status = "IN-PROGRESS"
+    @order.save
     @amount = "#{getOverallPrice(@order.amount)} &euro;".html_safe
   end
 
