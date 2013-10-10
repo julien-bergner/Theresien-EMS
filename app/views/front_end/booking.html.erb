@@ -45,7 +45,7 @@
                     <% count += 1 %>
             <% end  %>
         <% else %>
-            <div class=<%= (table.position.to_s == "16" or table.position.to_s == "17" or table.position.to_s == "18") ? "caption-container-teacher-table-" : "caption-container-table-" %><%= table.orientation %>><h4 class=<%= (table.position.to_s == "16" or table.position.to_s == "17") ? "caption-text-teacher-table-" : "caption-text-table-" %><%= table.orientation %>><%= table.caption %></h4></div>
+            <div class=<%= (table.position.to_s == "16" or table.position.to_s == "17" or table.position.to_s == "18") ? "caption-container-teacher-table-" : "caption-container-table-" %><%= table.orientation %>><h4 class=<%= (table.position.to_s == "16" or table.position.to_s == "17" or table.position.to_s == "18") ? "caption-text-teacher-table-" : "caption-text-table-" %><%= table.orientation %>><%= table.caption %></h4></div>
             <% seats.each do |seat| %>
 
                 <% name = getStatusString(seat) + '?' + table.position.to_s	  %>
