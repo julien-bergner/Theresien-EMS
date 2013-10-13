@@ -52,4 +52,14 @@ class OrderMailer < ActionMailer::Base
 
   end
 
+  def training_confirmation(registration)
+
+    attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
+    @registration = registration
+
+    mail(:to => @registration.email, :subject => "Ihre Anmeldung zur Tanzstunde vor dem Theresienball")
+
+
+  end
+
 end

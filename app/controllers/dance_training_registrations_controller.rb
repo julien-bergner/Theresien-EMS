@@ -45,6 +45,7 @@ class DanceTrainingRegistrationsController < ApplicationController
 
 
       if @dance_training_registration.save
+        OrderMailer.training_confirmation(@dance_training_registration).deliver
         redirect_to :dance_training_registration_success
       else
         respond_to do |format|

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Theresienball</title>
+
+</head>
+<body style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
+<table width="500px" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= image_tag attachments['logo.png'].url, :alt => 'Theresienball 2013' %></td>
+  </tr>
+  <tr>
+    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
+      <p style="margin: 8px 0;">Sehr geehrte/r <%= "#{@registration.first_name} #{@registration.last_name}" %>,</p>
+
+      vielen Dank für Ihre Anmeldung zur Tanzstunde am <%= @registration.date %> (<%= @registration.amount %> Personen).
+
+      <p style="margin: 8px 0;">
+        Die Tanzstunde findet in der Tanzschule Dance-Discounter in der Roelckestraße 72 in 13088 Berlin-Weißensee statt
+        und kostet 4 € pro Person für Schüler und 8 € pro Person für Eltern und Lehrer.
+      </p>
+
+      <p style="margin: 8px 0;">
+        Herzliche Grüße <br>
+        Julien Bergner <br>
+        (für das Theresienball-Team)
+      </p>
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>
