@@ -49,7 +49,7 @@ Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.e
               <%  if promTable.orientation == "promenade" %>
                   <%= "<b>Flanierkarte</b> inklusive Freigetr&auml;nk <br/>(ohne Cocktails) <br>9,99 &euro;".html_safe %>
               <% else %>
-                  <%= "<b>Platzkarte</b> inklusive Buffet <br/>an Tisch #{promTable.position} <br> #{seats.length == 10 ? "25" : "28"} &euro;".html_safe %>
+                  <%= "<b>Platzkarte</b> inklusive Buffet <br/>an Tisch #{promTable.position} <br> #{seats.length == 10 ? promTable.price/10 : seat.price } &euro;".html_safe %>
               <% end %>
             </p>
           </div>
