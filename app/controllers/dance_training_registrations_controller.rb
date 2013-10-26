@@ -1,4 +1,5 @@
 class DanceTrainingRegistrationsController < ApplicationController
+  before_filter :authenticate_admin!, :except => [:new, :create, :success]
   # GET /dance_training_registrations
   # GET /dance_training_registrations.json
   def index
