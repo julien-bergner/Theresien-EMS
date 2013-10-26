@@ -3,3 +3,4 @@ class AddClassToDanceTrainingRegistrations < ActiveRecord::Migration
     add_column :dance_training_registration, :date, :string
   end
 end
+d
