@@ -1,4 +1,6 @@
 TheresienEms::Application.routes.draw do
+  resources :dance_training_registrations
+
   default_url_options host: Rails.application.config.domain
 
   devise_for :admins

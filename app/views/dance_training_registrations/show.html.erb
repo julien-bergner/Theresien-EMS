@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @dance_training_registration.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @dance_training_registration.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @dance_training_registration.email %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @dance_training_registration.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_dance_training_registration_path(@dance_training_registration) %> |
+<%= link_to 'Back', dance_training_registrations_path %>

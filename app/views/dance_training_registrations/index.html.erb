@@ -1,0 +1,29 @@
+<h1>Listing dance_training_registrations</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dance_training_registrations.each do |dance_training_registration| %>
+  <tr>
+    <td><%= dance_training_registration.first_name %></td>
+    <td><%= dance_training_registration.last_name %></td>
+    <td><%= dance_training_registration.email %></td>
+    <td><%= dance_training_registration.amount %></td>
+    <td><%= link_to 'Show', dance_training_registration %></td>
+    <td><%= link_to 'Edit', edit_dance_training_registration_path(dance_training_registration) %></td>
+    <td><%= link_to 'Destroy', dance_training_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dance training registration', new_dance_training_registration_path %>
