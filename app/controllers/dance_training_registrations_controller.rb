@@ -42,15 +42,16 @@ class DanceTrainingRegistrationsController < ApplicationController
   def create
     @dance_training_registration = DanceTrainingRegistration.new(params[:dance_training_registration])
 
-    respond_to do |format|
+
       if @dance_training_registration.save
-        format.html { redirect_to @dance_training_registration, notice: 'Dance training registration was successfully created.' }
-        format.json { render json: @dance_training_registration, status: :created, location: @dance_training_registration }
+        redirect_to :dance_training_registration_success
       else
+        respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @dance_training_registration.errors, status: :unprocessable_entity }
+        end
       end
-    end
+
   end
 
   # PUT /dance_training_registrations/1
@@ -79,5 +80,12 @@ class DanceTrainingRegistrationsController < ApplicationController
       format.html { redirect_to dance_training_registrations_url }
       format.json { head :no_content }
     end
+  end
+
+  def success
+    respond_to do |format|
+      format.html
+    end
+
   end
 end

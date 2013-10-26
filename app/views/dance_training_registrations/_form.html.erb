@@ -1,16 +1,16 @@
 <%= simple_form_for(@dance_training_registration) do |f| %>
-  <%= f.error_notification %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :first_name, label: 'Vorname' %>
-    <%= f.input :last_name, label: 'Nachname' %>
-    <%= f.input :email, label: 'E-Mail' %>
-    <%= f.input :amount, collection: 1..10, label: 'Anzahl Personen',:selected => "1" %>
-    <%= f.input :date, collection: ["17.10.2013, 17.00-18.00 Uhr", "17.10.2013, 18.00-19.00 Uhr"], label: "Termin" %>
+    <div class="form-inputs">
+      <%= f.input :first_name, label: 'Vorname' %>
+      <%= f.input :last_name, label: 'Nachname' %>
+      <%= f.input :email, label: 'E-Mail' %>
+      <%= f.input :amount, collection: 1..10, label: 'Anzahl Personen', :selected => "1" %>
+      <%= f.input :date, collection: ["17.10.2013, 17.00-18.00 Uhr", "17.10.2013, 18.00-19.00 Uhr"], label: "Termin", :selected => "17.10.2013, 17.00-18.00 Uhr" %>
 
-  </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, 'Abschicken' %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit, 'Abschicken' %>
+    </div>
 <% end %>
