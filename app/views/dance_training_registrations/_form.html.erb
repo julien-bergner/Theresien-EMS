@@ -5,7 +5,9 @@
     <%= f.input :first_name, label: 'Vorname' %>
     <%= f.input :last_name, label: 'Nachname' %>
     <%= f.input :email, label: 'E-Mail' %>
-    <%= f.input :amount, label: 'Anzahl Personen' %>
+    <%= f.input :amount, collection: 1..10, label: 'Anzahl Personen',:selected => "1" %>
+    <%= f.input :date, collection: ["17.10.2013, 17.00-18.00 Uhr", "17.10.2013, 18.00-19.00 Uhr"], label: "Termin" %>
+
   </div>
 
   <div class="form-actions">
