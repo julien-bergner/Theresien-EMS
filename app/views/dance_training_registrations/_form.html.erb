@@ -2,13 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.input :amount %>
+    <%= f.input :first_name, label: 'Vorname' %>
+    <%= f.input :last_name, label: 'Nachname' %>
+    <%= f.input :email, label: 'E-Mail' %>
+    <%= f.input :amount, label: 'Anzahl Personen' %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Abschicken' %>
   </div>
 <% end %>
