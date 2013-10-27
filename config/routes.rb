@@ -35,7 +35,7 @@ TheresienEms::Application.routes.draw do
 
   match 'back_end/overview' => 'BackEnd#overview', :as => :overview
 
-  match 'tanzkurs' => 'DanceTrainingRegistrations#new', :as => 'dance_training'
+  match 'tanzstunde' => 'DanceTrainingRegistrations#new', :as => 'dance_training'
   match 'dance_training_registration_success' => 'DanceTrainingRegistrations#success', :as => 'dance_training_registration_success'
 
   root :to => "FrontEnd#index"
