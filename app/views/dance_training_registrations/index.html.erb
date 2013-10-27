@@ -1,29 +1,44 @@
-<h1>Listing dance_training_registrations</h1>
-
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @dance_training_registrations.each do |dance_training_registration| %>
-  <tr>
-    <td><%= dance_training_registration.first_name %></td>
-    <td><%= dance_training_registration.last_name %></td>
-    <td><%= dance_training_registration.email %></td>
-    <td><%= dance_training_registration.amount %></td>
-    <td><%= link_to 'Show', dance_training_registration %></td>
-    <td><%= link_to 'Edit', edit_dance_training_registration_path(dance_training_registration) %></td>
-    <td><%= link_to 'Destroy', dance_training_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = DanceTrainingRegistration -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:first_name) %></th>
+      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dance_training_registrations.each do |dance_training_registration| %>
+      <tr>
+        <td><%= link_to dance_training_registration.id, dance_training_registration_path(dance_training_registration) %></td>
+        <td><%= dance_training_registration.first_name %></td>
+        <td><%= dance_training_registration.last_name %></td>
+        <td><%= dance_training_registration.email %></td>
+        <td><%= dance_training_registration.amount %></td>
+        <td><%= dance_training_registration.date %></td>
+        <td><%=l dance_training_registration.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_dance_training_registration_path(dance_training_registration), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      dance_training_registration_path(dance_training_registration),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Dance training registration', new_dance_training_registration_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_dance_training_registration_path,
+            :class => 'btn btn-primary' %>

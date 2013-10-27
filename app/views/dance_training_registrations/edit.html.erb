@@ -1,6 +1,5 @@
-<h1>Editing dance_training_registration</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @dance_training_registration %> |
-<%= link_to 'Back', dance_training_registrations_path %>
+<%- model_class = DanceTrainingRegistration -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
+</div>
+<%= render :partial => 'form' %>
