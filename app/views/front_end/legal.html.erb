@@ -4,7 +4,7 @@
 <div class="ems-content">
 <p class="lead">
   <strong>Theresienball-Team</strong> <br>
-  vertreten durch Julien Bergner <br>
+  vertreten durch <%= Figaro.env.ansprechpartner_impressum %> <br>
   c/o Katholische Theresienschule <br>
   Behaimstra&szlig;e 29 <br>
   13086 Berlin <br>
@@ -15,7 +15,7 @@
 </p>
 <p class="lead">
   <strong>E-Mail</strong><br>
-  <%=  mail_to "theresienball@theresienschule.de", "theresienball@theresienschule.de" %>
+  <%=  mail_to Figaro.env.theresienball_mail,Figaro.env.theresienball_mail %>
 </p>
 <hr>
 <h3>Artwork</h3>

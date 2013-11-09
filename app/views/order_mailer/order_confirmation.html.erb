@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Theresienball</title>
+  <title><%= Figaro.env.titel %></title>
 
 </head>
 <body style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
 <table width="500px" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= image_tag attachments['logo.png'].url, :alt => 'Theresienball 2013' %></td>
+    <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;"><%= image_tag attachments['logo.png'].url, :alt => Figaro.env.titel %></td>
   </tr>
   <tr>
     <td style="color: #000000;font-size: 14px;font-family: Verdana, Helvetica, Arial;">
@@ -42,9 +42,9 @@
       </table>
       <p style="margin: 8px 0;">
         Bitte überweisen Sie <%= "#{number_to_currency(@order.amount, :unit => "", :separator => ",", :delimiter => "")} €" -%> auf das folgende Konto: <br>
-        Kontoinhaber: Theresienball <br>
-        Konto-Nr.: 10 62 19 43 02 <br>
-        BLZ: 100 500 00 (Berliner Sparkasse) <br>
+        Kontoinhaber:<%= Figaro.env.kontoinhaber %><br>
+        Kontonummer: <%= Figaro.env.kontonummer %> <br>
+        Bankleitzahl: <%= Figaro.env.bankleitzahl %>  <br>
       </p>
 
       <p style="margin: 8px 0;">
@@ -62,7 +62,7 @@
 
       <p style="margin: 8px 0;">
         Herzliche Grüße <br>
-        Julien Bergner <br>
+        <%= Figaro.env.ansprechpartner_mail %> <br>
         (für das Theresienball-Team)
       </p>
     </td>

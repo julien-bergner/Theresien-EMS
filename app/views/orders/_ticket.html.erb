@@ -30,7 +30,7 @@
 </head>
 <body>
 
-<p style="text-align: center;">Theresienball <%= Date.today.year -%> <br/>
+<p style="text-align: center;"><%= Figaro.env.titel %> <br/>
 Karten f&uuml;r <%=  "#{customer.first_name} #{customer.last_name} (#{customer.email})"  %></p>
 
 <% order.getSeatsPerTable.each_pair do |promTable, seats| %>
