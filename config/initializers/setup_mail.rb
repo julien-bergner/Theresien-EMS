@@ -1,8 +1,8 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.strato.de",
+  :address              => Figaro.env.theresienball_mail_host,
   :port                 => 587,
-  :domain               => "theresienschule.de",
-  :user_name            => "theresienball@theresienschule.de",
+  :domain               => Figaro.env.theresienball_mail_domain,
+  :user_name            => Figaro.env.theresienball_mail,
   # Set password as an environment variable
   :password             => Figaro.env.theresienball_mail_pass,
   :authentication       => "plain",
@@ -12,7 +12,7 @@ ActionMailer::Base.smtp_settings = {
 class DevelopmentMailInterceptor
   def self.delivering_email(message)
     message.subject = "[#{message.to}] #{message.subject}"
-    message.to      = "julien@bergner.fr"
+    message.to      = Figaro.env.theresienball_mail
   end
 end
 
