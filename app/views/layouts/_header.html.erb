@@ -10,7 +10,9 @@
       <div class="container nav-collapse">
         <ul class="nav">
           <li><%= link_to "Karten bestellen", :booking %></li>
+          <% if Figaro.env.tanzstundenanmeldung == "true" %>
           <li><%= link_to "Tanzstunden", :dance_training %></li>
+          <% end %>
           <!--<li> #link_to "Impressionen", :photos  %></li>-->
           <!--<li> #link_to "Sponsoren", :sponsors  %></li>-->
           <li><%= link_to "Kontakt", :contact  %></li>

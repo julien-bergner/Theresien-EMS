@@ -10,10 +10,11 @@
 </p>
 
 <p class="lead">Sollten wir innerhalb von 14 Tagen keine Zahlung von Ihnen verzeichnen, werden die von Ihnen reservierten Karten wieder f&uuml;r den Verkauf freigegeben.</p>
-
+<% if Figaro.env.tanzstundenanmeldung == "true" %>
 <hr>
 <h2>Sie möchten Ihre Tanzkenntnisse auffrischen?</h2>
 <h2>Wir bieten Ihnen <%= link_to "hier", :dance_training %> Tanzstunden zur Auffrischung an.</h2>
+<% end %>
 <hr>
 
 <p class="lead">Bei Fragen oder sonstigen Anliegen wenden Sie sich bitte an <%= mail_to Figaro.env.theresienball_mail,Figaro.env.theresienball_mail %>.</p>
