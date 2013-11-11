@@ -57,7 +57,7 @@ $start-height: -25px;
   position: relative;
   background-color: #ffffff;
   width: 900px;
-  height: 990px;
+  height: 920px;
   border-color: #000000;
   border-style: solid;
   border-width: 2px;
@@ -70,18 +70,17 @@ $start-height: -25px;
 
 }
 
-  @for $k from 5 through 15 {
+  @for $k from 9 through 18 {
       $adjustment-factor: ($k - 5);
       #table-#{$k} {
           position:absolute;
-          left: 913px - 90px * $adjustment-factor; top: 760px;
+          left: 1186px - 90px * $adjustment-factor; top: 690px;
       }
 
   }
 
-  @for $k from 1 through 9 {
+  @for $k from 1 through 8 {
       $adjustment-factor: ($k - 1);
-      @if $k > 5 { $k: $k + 10 }
       #table-#{$k} {
           position:absolute;
           top: 75px * $adjustment-factor + 90px; left:600px;
