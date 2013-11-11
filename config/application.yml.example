@@ -1,0 +1,40 @@
+# Konfiguration Theresienball
+
+# Allgemeines
+TITEL: "Theresienball 2013"
+ANSPRECHPARTNER_IMPRESSUM: "Julien Bergner" # Dieser Name steht im Impressum.
+ANSPRECHPARTNER_MAIL: "Julien Bergner" # Dieser Name ist der Absender der vom System versandten E-Mails.
+
+TERMIN: "25. Oktober 2013" # Taucht auf der Startseite und den PDF-Karten auf.
+ZEIT: "um 19.00 Uhr" # Taucht auf der Startseite und den PDF-Karten auf.
+ORT: "in der Turnhalle der Theresienschule" # Taucht auf der Startseite und den PDF-Karten auf.
+ADRESSE: "(Zugang &uuml;ber Behaimstra&szlig;e 29, 13086 Berlin)" # Taucht nur in den PDF-Karten auf.
+BAND: "Band" # Auf der Startseite: "Musikalisch begleitet werden wir von ..."
+
+TANZSTUNDENANMELDUNG: false # Versteckt oder zeigt die Tanzstundenannmeldung
+
+# Bankverbindung
+# Taucht auf der entsprechenden Zahlungsseite und in den Bestellbestätigungs-E-Mails auf.
+KONTOINHABER: "kontoinhaber"
+KONTONUMMER: "12 34 56 78 90"
+BANKLEITZAHL: "123 456 78 (Bank)"
+
+# Theresienball E-Mail
+# Über dieses E-Mail-Konto versendet das System alle E-Mails.
+THERESIENBALL_MAIL: "emailadress"
+THERESIENBALL_MAIL_PASS: "password"
+THERESIENBALL_MAIL_HOST: "mailhost"
+THERESIENBALL_MAIL_DOMAIN: "maildomain"
+
+# Saalplan
+# Die Preise für Plätze und Tische werden in der seed.rb angegeben.
+# Damit die Lehrertische entsprechend beschriftet sind, muss in der booking.html,erb angegeben werden,
+# welche Tische die Lehrertische sind.
+
+# Application
+# Hier ist die Website deployed.
+HOST: "host"
+SECRET_TOKEN: "secrettoken"
+
+
+
